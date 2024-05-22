@@ -1,12 +1,13 @@
+import useScrollToTop from "../../hooks/useScrollToTop";
+
 export default function Contact() {
+  useScrollToTop();
   return (
     <>
-      
-
       <main>
         <div className="container py-5">
-      <h2 className="fs-1 my-4 fw-bold text-primary ">Contact Us</h2>
-          <div className="row g-5">
+          <h2 className="fs-1 my-4 fw-bold text-primary ">Contact Us</h2>
+          <div className="row g-3">
             <div className="col-xl-6">
               <div className="row row-cols-md-2 g-4">
                 <div
@@ -49,7 +50,9 @@ export default function Contact() {
                   <div className="bg-light hvr-shutter-out-horizontal d-block p-3">
                     <div className="d-flex justify-content-start">
                       <i className="fa-solid fa-location-pin h3 pe-2"></i>
-                      <span className="h5 text-primary fw-bold">Office location</span>
+                      <span className="h5 text-primary fw-bold">
+                        Office location
+                      </span>
                     </div>
                     <span>#007, Street name, Bigtown BG23 4YZ, England</span>
                   </div>
@@ -58,6 +61,8 @@ export default function Contact() {
               <div className="aos-item" data-aos="fade-up" data-aos-delay="800">
                 <div className="mt-4 w-100 aos-item__inner">
                   <iframe
+                  loading={"lazy"}
+                    style={{ maxWidth: "100%" }}
                     title="map"
                     className="hvr-shadow"
                     width="100%"
@@ -78,9 +83,12 @@ export default function Contact() {
 
             <div className="col-xl-6">
               <h2 className="pb-4 text-primary fw-bold">Leave a message</h2>
-              <div className="row g-4">
+              <div className="row g-3">
                 <div className="col-6 mb-3">
-                  <label htmlFor="exampleFormControlInput1" className="form-label">
+                  <label
+                    htmlFor="exampleFormControlInput1"
+                    className="form-label"
+                  >
                     Fname
                   </label>
                   <input
@@ -91,7 +99,10 @@ export default function Contact() {
                   />
                 </div>
                 <div className="col-6 mb-3">
-                  <label htmlFor="exampleFormControlInput1" className="form-label">
+                  <label
+                    htmlFor="exampleFormControlInput1"
+                    className="form-label"
+                  >
                     Lname
                   </label>
                   <input
@@ -103,7 +114,10 @@ export default function Contact() {
                 </div>
               </div>
               <div className="mb-3">
-                <label htmlFor="exampleFormControlInput1" className="form-label">
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
                   Email
                 </label>
                 <input
@@ -114,7 +128,10 @@ export default function Contact() {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="exampleFormControlInput1" className="form-label">
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
                   Phone
                 </label>
                 <input
@@ -125,7 +142,10 @@ export default function Contact() {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="exampleFormControlInput1" className="form-label">
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
                   Country
                 </label>
                 <select
@@ -137,7 +157,10 @@ export default function Contact() {
                 </select>
               </div>
               <div className="mb-3">
-                <label htmlFor="exampleFormControlTextarea1" className="form-label">
+                <label
+                  htmlFor="exampleFormControlTextarea1"
+                  className="form-label"
+                >
                   Message
                 </label>
                 <textarea
@@ -153,8 +176,6 @@ export default function Contact() {
           </div>
         </div>
       </main>
-
-     
     </>
   );
 }

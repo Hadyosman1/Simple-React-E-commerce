@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Card from "./home/Card";
 import { useParams } from "react-router-dom";
-import Loader from "./Loader";
+import Loader from "../layout/Loader";
+import useScrollToTop from "../hooks/useScrollToTop";
 
 export default function SingleProductPage() {
+  useScrollToTop();
   const params = useParams();
   const [product, setProduct] = useState([]);
   const [loaderIsVisible, setLoaderIsVisible] = useState(true);
@@ -12,16 +14,17 @@ export default function SingleProductPage() {
     const fetchProduct = async () => {
       try {
         let res = await fetch(
-          `https://fakestoreapi.com/products/${params.productId}`
+          `https://e-commerce-data-waqn.onrender.com/products/${params.productId}`
         );
         let data = await res.json();
 
         if (res.ok) {
           setProduct([data]);
-          setLoaderIsVisible(false);
         }
       } catch (error) {
-        console.warn(error);
+        alert(error);
+      } finally {
+        setLoaderIsVisible(false);
       }
     };
 
@@ -70,9 +73,7 @@ export default function SingleProductPage() {
             {product[0]?.title}
           </span>
         </div>
-        <div className="row w-100 justify-content-center">
-          {productDetails}
-        </div>
+        <div className="row w-100 justify-content-center">{productDetails}</div>
       </div>
     </>
   );

@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "./../logo.svg";
+import { useContext } from "react";
+import { cartProductsContext } from "../state-mangment/cartContext/CartContext";
 
 export default function Nav() {
+  const { cartProducts } = useContext(cartProductsContext);
+
   return (
     <header
       style={{ backgroundColor: "#01497c" }}
@@ -9,13 +13,23 @@ export default function Nav() {
     >
       <nav className="navbar navbar-expand-lg container">
         <div className="container-fluid ">
-          <a
-            className="navbar-brand fw-bold text-light d-flex align-items-center "
-            href="/#"
-          >
-            <img width="50px" src={logo} alt="logo" />
-            Store
-          </a>
+          <div className="d-flex align-items-center ">
+            <Link
+              className="navbar-brand fw-bold text-light d-flex align-items-center "
+              to="/"
+            >
+              <img width="50px" src={logo} alt="logo" />
+              Store
+            </Link>
+            <Link to={"cart"} className="mx-2 ">
+              <i
+                className="position-relative z-3 fa-solid fa-cart-shopping text-light fs-5"
+                style={{ lineHeight: "32px" }}
+              >
+                <span className="cart-count">{cartProducts.length}</span>
+              </i>
+            </Link>
+          </div>
           <button
             className="navbar-toggler text-light border-light py-1 px-2"
             type="button"

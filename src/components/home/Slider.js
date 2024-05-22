@@ -1,6 +1,9 @@
+import useScrollToTop from "../../hooks/useScrollToTop";
+
 export default function Slider() {
+  useScrollToTop();
   return (
-    <div >
+    <div>
       <div
         style={{ minHeight: "250px" }}
         id="carouselExampleIndicators"

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
-import Loader from "../Loader";
+import Loader from "../../layout/Loader";
 
 export default function CardsContainer() {
   const [products, setProducts] = useState([]);
@@ -12,15 +12,19 @@ export default function CardsContainer() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://fakestoreapi.com/products");
+        const response = await fetch(
+          "https://e-commerce-data-waqn.onrender.com/products"
+        );
         const data = await response.json();
 
         if (response.ok) {
           setProducts(data);
-          setLoaderIsVisible(false);
         }
       } catch (error) {
         console.log(error);
+        alert("failed to fetch data");
+      } finally {
+        setLoaderIsVisible(false);
       }
     };
 
@@ -33,10 +37,9 @@ export default function CardsContainer() {
     async function fetchCategories() {
       try {
         const response = await fetch(
-          "https://fakestoreapi.com/products/categories"
+          "https://e-commerce-data-waqn.onrender.com/categories"
         );
         const data = await response.json();
-        console.log(response.ok);
         if (response.ok) {
           setCategories(data);
         }
@@ -54,9 +57,9 @@ export default function CardsContainer() {
     if (cat === "all") {
       setFilterArr([]);
       setFilterName("");
-
       return;
     }
+
     setFilterName(cat);
 
     setFilterArr(
@@ -94,43 +97,48 @@ export default function CardsContainer() {
     }
   );
 
-  let cats = categories.map((cat) => {
+  let cats = categories.map(({name}) => {
     return (
       <button
-        onClick={() => filterByCategory(cat)}
-        key={cat}
+        onClick={() => filterByCategory(name)}
+        key={name}
         type="button"
         className={`btn btn-primary rounded-2 ${
-          filterName === cat && "active-cat"
+          filterName === name && "active-cat"
         } `}
       >
-        {cat}
+        {name}
       </button>
     );
   });
 
   return (
     <div className="container">
+      <div className="row">
+        <h2 className="my-heading">Our Products</h2>
+      </div>
       {loaderIsVisible && (
         <div className="loader-container row justify-content-center my-5">
           <Loader />
         </div>
       )}
-      <div className="row">
-        <h2 className="my-heading">Our Products</h2>
-      </div>
       <div
-        className="btn-group mt-5 d-flex gap-2 flex-wrap "
+        className="btn-group mt-5 d-flex gap-2 flex-wrap  justify-content-center "
         role="group"
         aria-label="Basic example"
       >
-        <button
-          onClick={() => filterByCategory("all")}
-          type="button"
-          className={`btn btn-primary rounded-2 ${!filterName && "active-cat"}`}
-        >
-          All
-        </button>
+        {cats.length !== 0 && (
+          <button
+            onClick={() => filterByCategory("all")}
+            type="button"
+            style={{ minWidth: "150px" }}
+            className={`btn btn-primary rounded-2 ${
+              !filterName && "active-cat"
+            }`}
+          >
+            All
+          </button>
+        )}
         {cats}
       </div>
       <div className="row mt-4">{productsList}</div>
