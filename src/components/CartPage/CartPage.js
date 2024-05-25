@@ -8,13 +8,13 @@ function CartPage() {
   const { cartProducts, setCartProducts } = useContext(cartProductsContext);
 
   const handleDelete = (id) => {
-    const newCartProducts = cartProducts.filter((pro) => pro.id !== id);
+    const newCartProducts = cartProducts.filter((pro) => pro._id !== id);
     setCartProducts(newCartProducts);
   };
 
   const minusOne = (id) => {
     const newArr = cartProducts.map((pro) => {
-      if (pro.id === id) {
+      if (pro._id === id) {
         pro.quantity -= 1;
       }
       return pro;
@@ -25,7 +25,7 @@ function CartPage() {
 
   const plusOne = (id) => {
     const newArr = cartProducts.map((pro) => {
-      if (pro.id === id) {
+      if (pro._id === id) {
         pro.quantity += 1;
       }
       return pro;
@@ -61,23 +61,23 @@ function CartPage() {
           />
         </td>
         <td className="">
-          <div className="bg-secondary-subtle rounded-4 shadow d-inline-flex align-items-center gap-4 p-2">
+          <div className="bg-secondary-subtle rounded-3 shadow d-inline-flex align-items-center gap-4 p-2">
             <button
               disabled={pro.quantity > 1 ? false : true}
-              onClick={() => minusOne(pro.id)}
-              className="btn bg-danger "
+              onClick={() => minusOne(pro._id)}
+              className="btn bg-danger  btn-sm"
             >
               <i className="fa-solid text-light fa-minus"></i>
             </button>
             {pro.quantity}
-            <button onClick={() => plusOne(pro.id)} className="btn bg-success">
+            <button onClick={() => plusOne(pro._id)} className="btn bg-success btn-sm">
               <i className="fa-solid text-light fa-plus"></i>
             </button>
           </div>
         </td>
         <td>
           <button
-            onClick={() => handleDelete(pro.id)}
+            onClick={() => handleDelete(pro._id)}
             className="btn btn-danger mx-2"
           >
             Delete <i className="fa-solid fa-trash-can"></i>

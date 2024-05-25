@@ -24,7 +24,7 @@ export default function Card(props) {
         return [
           ...prev,
           {
-            id: props.id,
+            _id: props.id,
             title: props.title,
             image: props.image,
             price: props.price,
@@ -57,7 +57,7 @@ export default function Card(props) {
         className={
           props.media === "single"
             ? `col-12  col-lg-6 my-0 mb-3`
-            : `col-12 col-sm-6  col-md-4 col-lg-3 px-3 my-2`
+            : `col-12 col-md-6  col-lg-4 col-xl-3 px-3 my-2`
         }
       >
         <div
@@ -129,7 +129,7 @@ export default function Card(props) {
               <span className="fw-bold fs-4">price:</span> {props.price}$
             </h6>
 
-            {props.media !== "single" ? (
+            {props.media !== "single" && (
               <>
                 <hr className="text-primary" />{" "}
                 <Link
@@ -139,14 +139,13 @@ export default function Card(props) {
                   More Details ... 🕵️‍♀️
                 </Link>
               </>
-            ) : (
-              <button
-                onClick={handleAddToCart}
-                className="btn btn-primary fw-bold shadow-lg mt-2 form-control "
-              >
-                Add To Cart<i className="fa-solid fa-cart-plus mx-2 fs-5"></i>
-              </button>
             )}
+            <button
+              onClick={handleAddToCart}
+              className="btn btn-primary fw-bold shadow-lg mt-2 form-control "
+            >
+              Add To Cart <i className="fa-solid fa-cart-plus mx-2 fs-5"></i>
+            </button>
           </div>
         </div>
       </div>

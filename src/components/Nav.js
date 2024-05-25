@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "./../logo.svg";
 import { useContext } from "react";
 import { cartProductsContext } from "../state-mangment/cartContext/CartContext";
@@ -14,21 +14,13 @@ export default function Nav() {
       <nav className="navbar navbar-expand-lg container">
         <div className="container-fluid ">
           <div className="d-flex align-items-center ">
-            <Link
+            <NavLink
               className="navbar-brand fw-bold text-light d-flex align-items-center "
               to="/"
             >
               <img width="50px" src={logo} alt="logo" />
               Store
-            </Link>
-            <Link to={"cart"} className="mx-2 ">
-              <i
-                className="position-relative z-3 fa-solid fa-cart-shopping text-light fs-5"
-                style={{ lineHeight: "32px" }}
-              >
-                <span className="cart-count">{cartProducts.length}</span>
-              </i>
-            </Link>
+            </NavLink>
           </div>
           <button
             className="navbar-toggler text-light border-light py-1 px-2"
@@ -47,27 +39,38 @@ export default function Nav() {
           >
             <ul
               style={{ width: "fit-content" }}
-              className="navbar-nav ms-auto mb-2 mb-lg-0 fw-bold"
+              className="navbar-nav nav-ul ms-auto mb-2 mb-lg-0 fw-medium gap-1"
             >
               <li className="nav-item">
-                <Link
-                  className="nav-link active text-light"
+                <NavLink
+                  className="nav-link text-light fs-5 py-1"
                   aria-current="page"
                   to="/"
                 >
-                  <i className="fa-solid fa-home"></i> Home
-                </Link>
+                  Home <i className="fa-solid fa-home "></i>
+                </NavLink>
+              </li>
+              <li className="nav-item ">
+                <NavLink to={"cart"} className=" nav-link text-light fs-5 py-1 ">
+                  Cart{" "}
+                  <i
+                    className="position-relative z-3 fa-solid fa-cart-shopping text-light "
+                    // style={{ lineHeight: "1" }}
+                  >
+                    <span className="cart-count">{cartProducts.length}</span>
+                  </i>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-light" to="/contact">
-                  <i className="fa-solid fa-mobile-screen-button"></i> contact
-                  Us
-                </Link>
+                <NavLink className="nav-link text-light fs-5 py-1" to="/contact">
+                  contact {" "}
+                  <i className="fa-solid fa-mobile-screen-button"></i>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-light" to="/about">
-                  About
-                </Link>
+                <NavLink className="nav-link text-light fs-5 py-1 " to="/about">
+                  About <i className="fa-solid fa-file-invoice"></i>
+                </NavLink>
               </li>
             </ul>
           </div>

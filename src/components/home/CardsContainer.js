@@ -37,7 +37,7 @@ export default function CardsContainer() {
     async function fetchCategories() {
       try {
         const response = await fetch(
-          "https://e-commerce-data-waqn.onrender.com/categories"
+          "https://node-server-32yn.onrender.com/api/categories"
         );
         const data = await response.json();
         if (response.ok) {
@@ -117,11 +117,6 @@ export default function CardsContainer() {
       <div className="row">
         <h2 className="my-heading">Our Products</h2>
       </div>
-      {loaderIsVisible && (
-        <div className="loader-container row justify-content-center my-5">
-          <Loader />
-        </div>
-      )}
       <div
         className="btn-group mt-5 d-flex gap-2 flex-wrap  justify-content-center "
         role="group"
@@ -142,6 +137,11 @@ export default function CardsContainer() {
         {cats}
       </div>
       <div className="row mt-4">{productsList}</div>
+      {loaderIsVisible && (
+        <div className="loader-container row justify-content-center my-5">
+          <Loader />
+        </div>
+      )}
     </div>
   );
 }
