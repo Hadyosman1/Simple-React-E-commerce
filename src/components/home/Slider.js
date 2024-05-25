@@ -32,7 +32,7 @@ export default function Slider() {
           ></button>
         </div>
         <div className="carousel-inner">
-          <div style={{ height: "90svh" }} className="carousel-item active">
+          <div style={{ height: "91svh" }} className="carousel-item active">
             <img
               style={{ objectFit: "cover" }}
               src="https://images.pexels.com/photos/4158/apple-iphone-smartphone-desk.jpg"
@@ -40,7 +40,7 @@ export default function Slider() {
               alt="products"
             />
           </div>
-          <div style={{ height: "90svh" }} className="carousel-item">
+          <div style={{ height: "91svh" }} className="carousel-item">
             <img
               style={{ objectFit: "cover" }}
               src="https://wallpapers.com/images/hd/e-commerce-1900-x-1118-wallpaper-r2k1ldol65vss423.jpg"
@@ -48,7 +48,7 @@ export default function Slider() {
               alt="products"
             />
           </div>
-          <div style={{ height: "90svh" }} className="carousel-item">
+          <div style={{ height: "91svh" }} className="carousel-item">
             <img
               style={{ objectFit: "cover" }}
               src="https://dataoptin.com/wp-content/uploads/2022/09/the-importance-of-e-commerce-in-your-organization.png"

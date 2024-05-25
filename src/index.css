@@ -454,3 +454,22 @@ footer {
 .btn-primary:hover {
   box-shadow: 0 0 5px 1px #025c9b;
 }
+
+.cart-table {
+  &::-webkit-scrollbar {
+    width: 3px !important; /* عرض شريط التمرير */
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #e6e6e6; /* لون مسار شريط التمرير */
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background: #01497C; /* لون مقبض شريط التمرير */
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555555; /* لون مقبض شريط التمرير عند التحويم */
+  }
+}

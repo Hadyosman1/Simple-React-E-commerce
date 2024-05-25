@@ -14,7 +14,7 @@ export default function SingleProductPage() {
     const fetchProduct = async () => {
       try {
         let res = await fetch(
-          `https://e-commerce-data-waqn.onrender.com/products/${params.productId}`
+          `https://node-server-32yn.onrender.com/api/products/${params.productId}`
         );
         let data = await res.json();
 
@@ -35,7 +35,7 @@ export default function SingleProductPage() {
 
   let productDetails = product.map(
     ({
-      id,
+      _id,
       title,
       price,
       description,
@@ -46,7 +46,7 @@ export default function SingleProductPage() {
       return (
         <Card
           media="single"
-          key={id}
+          key={_id}
           title={title}
           price={price}
           description={description}
@@ -54,7 +54,7 @@ export default function SingleProductPage() {
           image={image}
           rate={rate}
           count={count}
-          id={id}
+          id={_id}
         />
       );
     }

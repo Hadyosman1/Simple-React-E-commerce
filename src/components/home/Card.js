@@ -17,7 +17,7 @@ export default function Card(props) {
   };
 
   const handleAddToCart = (e) => {
-    const pro = cartProducts.find((product) => product.id === props.id);
+    const pro = cartProducts.find((product) => product._id === props.id);
 
     if (!pro) {
       setCartProducts((prev) => {
@@ -38,7 +38,7 @@ export default function Card(props) {
     } else {
       setCartProducts((prev) => {
         return prev.map((product) => {
-          if (product.id === pro.id) {
+          if (product._id === pro._id) {
             return {
               ...product,
               quantity: product.quantity + 1,

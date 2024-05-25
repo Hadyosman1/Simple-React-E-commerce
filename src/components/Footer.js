@@ -1,16 +1,17 @@
+import { Link } from "react-router-dom";
 import logo from "./../logo.svg"
 export default function Footer() {
   return (
     <footer>
       <div className="container">
         <div className="logo">
-        <a
+        <Link
             className="navbar-brand fs-4 fw-bold text-light d-flex align-items-center "
-            href="/#"
+            to="/"
           >
             <img width="100px" src={logo} alt="logo" />
             Store
-          </a>
+          </Link>
         </div>
         <div className="lists">
           <div className="list">

@@ -13,7 +13,7 @@ export default function CardsContainer() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://e-commerce-data-waqn.onrender.com/products"
+          "https://node-server-32yn.onrender.com/api/products"
         );
         const data = await response.json();
 
@@ -73,7 +73,7 @@ export default function CardsContainer() {
 
   let productsList = filterOrAll.map(
     ({
-      id,
+      _id,
       title,
       price,
       description,
@@ -83,7 +83,7 @@ export default function CardsContainer() {
     }) => {
       return (
         <Card
-          key={id}
+          key={_id}
           title={title}
           price={price}
           description={description}
@@ -91,13 +91,13 @@ export default function CardsContainer() {
           image={image}
           rate={rate}
           count={count}
-          id={id}
+          id={_id}
         />
       );
     }
   );
 
-  let cats = categories.map(({name}) => {
+  let cats = categories.map(({ name }) => {
     return (
       <button
         onClick={() => filterByCategory(name)}
