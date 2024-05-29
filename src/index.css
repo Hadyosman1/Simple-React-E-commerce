@@ -111,25 +111,36 @@ code {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-div.navbar-collapse.collapse.show {
-  position: absolute;
-  background-color: #01497c;
-  width: 310px;
-  bottom: 0;
-  left: 50%;
-  translate: -50% 110%;
-  padding: 10px;
-  border-radius: 0.5em;
-  box-shadow: 0 0 30px 0 #00000073;
-  border: 3px solid #fff;
 
-  ul.navbar-nav {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    margin-inline: auto;
+@media (width < 991px ) {
+
+  .navbar-toggler:focus {
+    
+    box-shadow: none;
+  }
+
+  div.navbar-collapse.collapse.show {
+    position: absolute;
+    background-color: #01497c;
+    width: 310px;
+    bottom: 0;
+    left: 50%;
+    translate: -50% 110%;
+    padding: 10px;
+    border-radius: 0.5em;
+    box-shadow: 0 0 30px 0 #00000073;
+    border: 3px solid #fff;
+
+    
+  
+    ul.navbar-nav {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      margin-inline: auto;
+    }
   }
 }
 

@@ -23,7 +23,7 @@ export default function Nav() {
             </NavLink>
           </div>
           <button
-            className="navbar-toggler text-light border-light py-1 px-2"
+            className="navbar-toggler text-light border-light border-1 py-1 px-2"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -31,7 +31,7 @@ export default function Nav() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="fs-2 fa-solid fa-bars text-light"></span>
+            <span className="fs-4 fa-solid fa-bars text-light"></span>
           </button>
           <div
             className="collapse navbar-collapse "
