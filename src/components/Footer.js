@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "./../logo.svg"
+import logo from "../assets/logo.png"
 export default function Footer() {
   return (
     <footer>
@@ -9,8 +9,7 @@ export default function Footer() {
             className="navbar-brand fs-4 fw-bold text-light d-flex align-items-center "
             to="/"
           >
-            <img width="100px" src={logo} alt="logo" />
-            Store
+            <img className="rounded footer-logo" width="100px" src={logo} alt="logo" />
           </Link>
         </div>
         <div className="lists">

@@ -1,12 +1,21 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { cartProductsContext } from "../../state-mangment/cartContext/CartContext";
+import { cartProductsContext } from "../../state-mangment/CartContext";
+import { toastContext } from "../../state-mangment/ToastContext";
+import { productsContext } from "../../state-mangment/ProductsContext";
 
 export default function Card(props) {
   const [isDesHide, setIsDesHide] = useState(true);
   const [isTitleHide, setIsTitleHide] = useState(true);
 
+  //taost
+  const { setToasts } = useContext(toastContext);
+
+  //cart
   const { cartProducts, setCartProducts } = useContext(cartProductsContext);
+
+  //products
+  const { products, setProducts } = useContext(productsContext);
 
   const handleDes = () => {
     setIsDesHide(!isDesHide);
@@ -17,7 +26,19 @@ export default function Card(props) {
   };
 
   const handleAddToCart = (e) => {
+    setToasts((prev) => [
+      ...prev,
+      {
+        title: "welcome 😊",
+        message: "added product successfully 🎉",
+        type: "success",
+        id: Date.now(),
+      },
+    ]);
+
     const pro = cartProducts.find((product) => product._id === props.id);
+
+    // const product = products.find((pro) => pro._id === props.id);
 
     if (!pro) {
       setCartProducts((prev) => {
@@ -49,7 +70,17 @@ export default function Card(props) {
         });
       });
     }
+
+    // //decrement count of this product
+    // setProducts((prev) => [
+    //   ...prev,
+    //   {
+    //     ...product,
+    //     rating: { rate: product.rate, count: product.count - 1 },
+    //   },
+    // ]);
   };
+  const product = cartProducts.find((pro) => pro._id === props.id);
 
   return (
     <>
@@ -125,8 +156,14 @@ export default function Card(props) {
             </h6>
             <hr className="text-primary" />
 
-            <h6 className="card-title text-success fw-bold fs-4">
-              <span className="fw-bold fs-4">price:</span> {props.price}$
+            <h6 className="card-title text-success fw-bold fs-5">
+              <span className="fw-bold fs-5">price:</span> {props.price}$
+            </h6>
+            <hr className="text-primary" />
+
+            <h6 className="card-title fw-bold text-warning text-capitalize ">
+              <span className="fw-bold text-primary fs-5">stock:</span>{" "}
+              {props.count}
             </h6>
 
             {props.media !== "single" && (
@@ -134,17 +171,33 @@ export default function Card(props) {
                 <hr className="text-primary" />{" "}
                 <Link
                   to={`/SingleProductPage/${props.id}`}
-                  className="btn btn-primary"
+                  className="text-primary text-decoration-none fw-bold fs-5"
                 >
                   More Details ... 🕵️‍♀️
                 </Link>
+                <hr className="text-primary m-2" />{" "}
               </>
             )}
             <button
               onClick={handleAddToCart}
-              className="btn btn-primary fw-bold shadow-lg mt-2 form-control "
+              className="btn btn-primary fw-bold shadow-lg mt-2 form-control position-relative"
             >
               Add To Cart <i className="fa-solid fa-cart-plus mx-2 fs-5"></i>
+              {product && (
+                <span
+                  style={{
+                    right: "-5px",
+                    top: "-5px",
+                    padding: "6px",
+                    background: "#01497c",
+                    border: "2px solid #fff",
+                    color: "#fff",
+                  }}
+                  className="cart-count"
+                >
+                  {product?.quantity}
+                </span>
+              )}
             </button>
           </div>
         </div>
