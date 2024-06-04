@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { cartProductsContext } from "../../state-mangment/CartContext";
-import cart from "../../assets/4495904.jpg";
 import useScrollToTop from "../../hooks/useScrollToTop";
 
 function CartPage() {
@@ -122,7 +121,7 @@ function CartPage() {
                 <tbody>{productsList}</tbody>
                 <tfoot>
                   <tr>
-                    <th colSpan={10} scope="row" className="text-center fs-5">
+                    <th colSpan={10} scope="row" className="text-center fs-5 ">
                       Total Price: {""}
                       <span className="text-success">{totalPrice}$</span>
                     </th>
@@ -138,14 +137,14 @@ function CartPage() {
                 Your Cart is Empty Go To Home To Add Product.. 😃
               </h3>
             </div>
-            <div>
+            <div className="text-center">
               <img
                 style={{
-                  maxWidth: "100%",
-                  aspectRatio: "12/6",
+                  width: "100%",
+                  aspectRatio: "21/10",
                   objectFit: "contain",
                 }}
-                src={cart}
+                src={"./assets/shopping-fun.png"}
                 alt="cart"
               />
             </div>

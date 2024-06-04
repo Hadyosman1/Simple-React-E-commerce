@@ -1,15 +1,19 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png"
 export default function Footer() {
   return (
     <footer>
       <div className="container">
         <div className="logo">
-        <Link
+          <Link
             className="navbar-brand fs-4 fw-bold text-light d-flex align-items-center "
             to="/"
           >
-            <img className="rounded footer-logo" width="100px" src={logo} alt="logo" />
+            <img
+              className="rounded footer-logo"
+              width="100px"
+              src="./assets/logo.png"
+              alt="logo"
+            />
           </Link>
         </div>
         <div className="lists">
@@ -41,13 +45,25 @@ export default function Footer() {
         </div>
         <div className="social-media">
           <div className="icons">
-            <a rel="noreferrer" href="https://www.facebook.com/haadii.osman" target="_blank">
-              <i className="fa-brands fa-square-facebook">	</i>
+            <a
+              rel="noreferrer"
+              href="https://www.facebook.com/haadii.osman"
+              target="_blank"
+            >
+              <i className="fa-brands fa-square-facebook"> </i>
             </a>
-            <a rel="noreferrer" href="https://twitter.com/hadyOsman_" target="_blank">
+            <a
+              rel="noreferrer"
+              href="https://twitter.com/hadyOsman_"
+              target="_blank"
+            >
               <i className="fa-brands fa-square-twitter"></i>
             </a>
-            <a rel="noreferrer" href="https://www.instagram.com/hady_osman22/" target="_blank">
+            <a
+              rel="noreferrer"
+              href="https://www.instagram.com/hady_osman22/"
+              target="_blank"
+            >
               <i className="fa-brands fa-instagram"></i>
             </a>
             <a href="/#">

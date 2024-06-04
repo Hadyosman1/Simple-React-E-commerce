@@ -46,7 +46,11 @@ function CartList() {
   const cartList = cartProducts.map((pro) => (
     <div key={pro._id} className="pro-in-list">
       <div className="position-relative">
-        <img src={pro.image} alt={pro.title} />{" "}
+        <img
+          src={`https://node-server-32yn.onrender.com/uploads/${pro.image}`}
+          alt={pro.title}
+          className="me-2"
+        />{" "}
         <div className=" quantity">
           <h3 className="fs-6 text-light fw-semibold text-center m-0">
             {pro.quantity}
@@ -112,7 +116,7 @@ function CartList() {
           </div>
 
           <div className="cart-products-list-wrapper">{cartList}</div>
-          <div className="bg-success bg-opacity-75 rounded text-center text-light p-1 m-0 mt-2 fw-bold">
+          <div className="bg-success bg-opacity-75 rounded text-center text-light p-1 m-0 mt-2 mb-1 fw-bold">
             Total: <span>{totalPrice}$</span>
           </div>
         </>

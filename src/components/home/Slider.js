@@ -28,7 +28,7 @@ export default function Slider() {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <div style={{ height: "calc(100svh - 55px)" }} className=" ">
             <img
               loading="lazy"
@@ -38,13 +38,13 @@ export default function Slider() {
               alt="products"
             />
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
         <SwiperSlide>
           <div style={{ height: "calc(100svh - 55px)" }} className="">
             <img
               loading="lazy"
               style={{ objectFit: "cover" }}
-              src="./pic2.jpg"
+              src="./assets/pic2.jpg"
               className="d-block h-100 w-100"
               alt="products"
             />
@@ -55,7 +55,7 @@ export default function Slider() {
             <img
               loading="lazy"
               style={{ objectFit: "cover" }}
-              src="./pic3.jpg"
+              src="./assets/pic3.jpg"
               className="d-block h-100 w-100"
               alt="products"
             />
@@ -66,7 +66,7 @@ export default function Slider() {
             <img
               loading="lazy"
               style={{ objectFit: "cover" }}
-              src="./pic4.jpg"
+              src="./assets/pic4.jpg"
               className="d-block h-100 w-100"
               alt="products"
             />
@@ -77,7 +77,7 @@ export default function Slider() {
             <img
               loading="lazy"
               style={{ objectFit: "cover" }}
-              src="./pic5.jpg"
+              src="./assets/pic5.jpg"
               className="d-block h-100 w-100"
               alt="products"
             />

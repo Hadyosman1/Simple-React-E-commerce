@@ -36,7 +36,7 @@ function App() {
 
               <Nav />
               <div
-                style={{ minHeight: "50svh", marginTop: "55px" }}
+                style={{ minHeight: "50svh", marginTop: "52px" }}
                 className=""
               >
                 <Routes>

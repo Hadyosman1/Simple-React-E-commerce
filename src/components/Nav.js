@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.png";
 import { useContext } from "react";
 import { cartProductsContext } from "../state-mangment/CartContext";
 import CartList from "./Cart/CartList";
@@ -10,7 +9,7 @@ export default function Nav() {
   return (
     <header
       style={{ backgroundColor: "#01497c" }}
-      className="border-bottom border-3 fixed-top "
+      className="border-bottom border-1 fixed-top "
     >
       <nav className="navbar navbar-expand-lg container">
         <div className="container-fluid ">
@@ -19,7 +18,7 @@ export default function Nav() {
               className="navbar-brand fw-bold text-light d-flex align-items-center "
               to="/"
             >
-              <img className="rounded" width="85px" src={logo} alt="logo" />
+              <img className="rounded" width="85px" src="./assets/logo.png" alt="logo" />
             </NavLink>
           </div>
           <button

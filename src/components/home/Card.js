@@ -38,8 +38,6 @@ export default function Card(props) {
 
     const pro = cartProducts.find((product) => product._id === props.id);
 
-    // const product = products.find((pro) => pro._id === props.id);
-
     if (!pro) {
       setCartProducts((prev) => {
         return [
@@ -71,14 +69,18 @@ export default function Card(props) {
       });
     }
 
-    // //decrement count of this product
-    // setProducts((prev) => [
-    //   ...prev,
-    //   {
-    //     ...product,
-    //     rating: { rate: product.rate, count: product.count - 1 },
-    //   },
-    // ]);
+    //decrement count of this product
+    let updatedProductsCount = products.map((product) => {
+      if (product._id === props.id) {
+        return {
+          ...product,
+          rating: { ...product.rating, count: (product.rating.count - 1) },
+        };
+      }
+
+      return product;
+    });
+    setProducts(updatedProductsCount);
   };
   const product = cartProducts.find((pro) => pro._id === props.id);
 
@@ -102,7 +104,7 @@ export default function Card(props) {
           >
             <img
               loading={"lazy"}
-              src={props.image}
+              src={`https://node-server-32yn.onrender.com/uploads/${props.image}`}
               className="zoom-in-img"
               style={{
                 width: "100%",

@@ -22,7 +22,7 @@ function Toasts() {
         newArr.shift();
         return newArr;
       });
-    }, (toasts.length + 1) * 1000);
+    }, toasts.length * 700);
 
     return () => {
       clearTimeout(timeOut);
@@ -32,24 +32,30 @@ function Toasts() {
   const toastsList = toasts.reverse().map((toast) => (
     <div key={toast.id} className={`my-toast bg-${toast.type} bg-opacity-75`}>
       <div className="row justify-content-between  m-0">
+        <p className="col-11 text-start fw-semibold m-0 text-light fs-6">
+          {toast.title}
+        </p>
         <button
           className="btn p-0 col-1"
           onClick={(e) => handleDeleteToast(e, toast.id)}
         >
           <i className="fa-solid fa-xmark fs-3 text-light m-0"></i>
         </button>
-        <p className="col-11 text-end fw-semibold m-0 text-light">
-          {toast.title}
-        </p>
       </div>
       <hr className=" m-0 text-light" />
       <div className="row p-2">
-        <p className=" text-end fw-semibold m-0 text-light">{toast.message}</p>
+        <p className=" text-start fw-semibold m-0 text-light fs-6">
+          {toast.message}
+        </p>
       </div>
     </div>
   ));
 
-  return <div className="toasts-wrapper">{toastsList}</div>;
+  return (
+    <div className="toasts-parent">
+      <div className="toasts-wrapper">{toastsList}</div>
+    </div>
+  );
 }
 
 export default Toasts;
