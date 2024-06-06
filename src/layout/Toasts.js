@@ -16,13 +16,16 @@ function Toasts() {
       return;
     }
 
-    let timeOut = setTimeout(() => {
-      setToasts((prev) => {
-        let newArr = [...prev];
-        newArr.shift();
-        return newArr;
-      });
-    }, toasts.length * 700);
+    let timeOut = setTimeout(
+      () => {
+        setToasts((prev) => {
+          let newArr = [...prev];
+          newArr.shift();
+          return newArr;
+        });
+      },
+      toasts.length === 1 ? 3000 : toasts.length * 700
+    );
 
     return () => {
       clearTimeout(timeOut);

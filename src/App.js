@@ -18,78 +18,81 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import ToastContext from "./state-mangment/ToastContext";
 import ProductsContext from "./state-mangment/ProductsContext";
 import LoaderContext from "./state-mangment/LoaderContext";
+import AuthContext from "./state-mangment/AuthContext";
+import AuthModal from "./components/auth/AuthModal";
+import AuthModalContext from "./state-mangment/AuthModalContentContext";
 
 function App() {
   return (
     <>
       <BtnScrollToTop />
-
       {/* cursor shape */}
       <Cursor />
 
-      <LoaderContext>
-        <ProductsContext>
-          <CartContext>
-            <ToastContext>
-              {/* Toasts  */}
-              <Toasts />
+      <AuthContext>
+        <LoaderContext>
+          <ProductsContext>
+            <CartContext>
+              <ToastContext>
+                <Toasts />
+                <AuthModalContext>
+                  <AuthModal />
+                  <Nav />
+                </AuthModalContext>
+                <div style={{ minHeight: "50svh", marginTop: "52px" }}>
+                  <Routes>
+                    <Route
+                      path="/"
+                      element={
+                        <>
+                          <Slider />
+                          <CardsContainer />
+                        </>
+                      }
+                    />
+                    <Route
+                      path="About"
+                      element={
+                        <>
+                          <About />
+                        </>
+                      }
+                    />
+                    <Route
+                      path="/SingleProductPage/:productId"
+                      element={
+                        <>
+                          <SingleProductPage />
+                        </>
+                      }
+                    />
 
-              <Nav />
-              <div
-                style={{ minHeight: "50svh", marginTop: "52px" }}
-                className=""
-              >
-                <Routes>
-                  <Route
-                    path="/"
-                    element={
-                      <>
-                        <Slider />
-                        <CardsContainer />
-                      </>
-                    }
-                  />
-                  <Route
-                    path="About"
-                    element={
-                      <>
-                        <About />
-                      </>
-                    }
-                  />
-                  <Route
-                    path="/SingleProductPage/:productId"
-                    element={
-                      <>
-                        <SingleProductPage />
-                      </>
-                    }
-                  />
+                    <Route
+                      path="/contact"
+                      element={
+                        <>
+                          <Contact />
+                        </>
+                      }
+                    />
 
-                  <Route
-                    path="/contact"
-                    element={
-                      <>
-                        <Contact />
-                      </>
-                    }
-                  />
+                    <Route
+                      path="/cart"
+                      element={
+                        <>
+                          <CartPage />
+                        </>
+                      }
+                    />
+                  </Routes>
+                </div>
+              </ToastContext>
+            </CartContext>
+          </ProductsContext>
+        </LoaderContext>
 
-                  <Route
-                    path="/cart"
-                    element={
-                      <>
-                        <CartPage />
-                      </>
-                    }
-                  />
-                </Routes>
-              </div>
-            </ToastContext>
-          </CartContext>
-        </ProductsContext>
-      </LoaderContext>
-      <Footer />
+        <Footer />
+      </AuthContext>
     </>
   );
 }

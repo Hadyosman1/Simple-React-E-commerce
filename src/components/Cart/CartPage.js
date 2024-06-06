@@ -57,7 +57,7 @@ function CartPage() {
               aspectRatio: "4/3",
               objectFit: "contain",
             }}
-            src={pro.image}
+            src={`https://node-server-32yn.onrender.com/uploads/${pro.image}`}
             alt={pro.title}
           />
         </td>

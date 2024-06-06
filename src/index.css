@@ -159,8 +159,7 @@ span.my-heading {
   -webkit-text-stroke: 1.5px #e6e6e6;
   font-size: 2.7rem;
   height: fit-content;
-  text-shadow: -5px 4px 1px #01497c34,
-  -3px 6px 8px #0000003f;
+  text-shadow: -5px 4px 1px #01497c34, -3px 6px 8px #0000003f;
 }
 
 h2.my-heading {
@@ -506,8 +505,8 @@ footer {
   &:hover {
     transform: translateY(2px);
   }
-  &:focus{
-    box-shadow: 0 0 10px 2px #01497c66;
+  &:focus {
+    outline: 2px solid #01497c;
   }
 }
 .btn-primary:hover {
@@ -650,9 +649,10 @@ footer {
 .swiper-button-prev {
   color: #006cb9 !important;
   transition: all 0.2s;
+  scale: 0.8;
 
   &:hover {
-    scale: 1.2;
+    scale: 1;
   }
 }
 

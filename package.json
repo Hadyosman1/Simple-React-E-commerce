@@ -20,6 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "https://node-server-32yn.onrender.com",
   "eslintConfig": {
     "extends": [
       "react-app",

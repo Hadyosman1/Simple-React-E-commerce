@@ -2,9 +2,16 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { cartProductsContext } from "../state-mangment/CartContext";
 import CartList from "./Cart/CartList";
+import { authContext } from "../state-mangment/AuthContext";
+import { authModalContext } from "../state-mangment/AuthModalContentContext";
 
-export default function Nav() {
+const Nav = () => {
   const { cartProducts } = useContext(cartProductsContext);
+  const {
+    auth: { isLoggedIn },
+  } = useContext(authContext);
+
+  const { setLoginOrRegister } = useContext(authModalContext);
 
   return (
     <header
@@ -18,7 +25,12 @@ export default function Nav() {
               className="navbar-brand fw-bold text-light d-flex align-items-center "
               to="/"
             >
-              <img className="rounded" width="85px" src="./assets/logo.png" alt="logo" />
+              <img
+                className="rounded"
+                width="85px"
+                src="./assets/logo.png"
+                alt="logo"
+              />
             </NavLink>
           </div>
           <button
@@ -36,10 +48,7 @@ export default function Nav() {
             className="collapse navbar-collapse "
             id="navbarSupportedContent"
           >
-            <ul
-              style={{ width: "fit-content" }}
-              className="navbar-nav nav-ul ms-auto mb-2 mb-lg-0 fw-medium gap-1"
-            >
+            <ul className="navbar-nav nav-ul ms-auto mb-2 mb-lg-0 fw-medium gap-1 flex-grow-1 justify-content-end ">
               <li className="nav-item">
                 <NavLink
                   className="nav-link text-light fs-6 py-1"
@@ -76,10 +85,54 @@ export default function Nav() {
                   About <i className="fa-solid fa-file-invoice"></i>
                 </NavLink>
               </li>
+              <ul
+                style={{ flexBasis: "13%" }}
+                className="navbar-nav gap-1 align-items-center justify-content-center"
+              >
+                {!isLoggedIn ? (
+                  <>
+                    <li className="nav-item w-50">
+                      <button
+                        onClick={() => {
+                          setLoginOrRegister("login");
+                        }}
+                        data-bs-toggle="modal"
+                        data-bs-target="#auth-modal"
+                        style={{ padding: "3.5px" }}
+                        className="btn btn-sm w-100  btn-success"
+                      >
+                        login
+                      </button>
+                    </li>
+                    <li className="nav-item w-50">
+                      <button
+                        onClick={() => setLoginOrRegister("register")}
+                        style={{ padding: "3.5px" }}
+                        data-bs-toggle="modal"
+                        data-bs-target="#auth-modal"
+                        className={`btn btn-sm btn-warning text-light  text-center w-100`}
+                      >
+                        register
+                      </button>
+                    </li>
+                  </>
+                ) : (
+                  <li className="nav-item w-50">
+                    <button
+                      onClick={() => {}}
+                      style={{ padding: "3.5px" }}
+                      className="btn btn-sm w-100  btn-danger"
+                    >
+                      logout
+                    </button>
+                  </li>
+                )}
+              </ul>
             </ul>
           </div>
         </div>
       </nav>
     </header>
   );
-}
+};
+export default Nav;
