@@ -24,7 +24,7 @@ function Toasts() {
           return newArr;
         });
       },
-      toasts.length === 1 ? 3000 : toasts.length * 700
+      toasts.length === 1 ? 4000 : toasts.length * 1000
     );
 
     return () => {
@@ -33,21 +33,33 @@ function Toasts() {
   }, [toasts, setToasts]);
 
   const toastsList = toasts.reverse().map((toast) => (
-    <div key={toast.id} className={`my-toast bg-${toast.type} bg-opacity-75`}>
+    <div key={toast.id} className={`my-toast bg-${toast.type} `}>
       <div className="row justify-content-between  m-0">
-        <p className="col-11 text-start fw-semibold m-0 text-light fs-6">
+        <p
+          className={`col-11 text-start fw-semibold m-0 text-light fs-6 ${
+            toast.type === "warning" && "text-primary"
+          }`}
+        >
           {toast.title}
         </p>
         <button
           className="btn p-0 col-1"
           onClick={(e) => handleDeleteToast(e, toast.id)}
         >
-          <i className="fa-solid fa-xmark fs-3 text-light m-0"></i>
+          <i
+            className={`fa-solid fa-xmark fs-3 text-light m-0 ${
+              toast.type === "warning" && "text-primary"
+            }`}
+          ></i>
         </button>
       </div>
       <hr className=" m-0 text-light" />
       <div className="row p-2">
-        <p className=" text-start fw-semibold m-0 text-light fs-6">
+        <p
+          className={` text-start fw-semibold m-0 text-light fs-6 ${
+            toast.type === "warning" && "text-primary"
+          }`}
+        >
           {toast.message}
         </p>
       </div>
@@ -55,7 +67,7 @@ function Toasts() {
   ));
 
   return (
-    <div className="toasts-parent">
+    <div className={`toasts-parent ${toasts.length >= 4 && "overlay"}`}>
       <div className="toasts-wrapper">{toastsList}</div>
     </div>
   );

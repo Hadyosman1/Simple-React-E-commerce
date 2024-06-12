@@ -1,98 +1,72 @@
-import Nav from "./components/Nav";
 import CardsContainer from "./components/home/CardsContainer";
 import Slider from "./components/home/Slider";
-import { Routes, Route } from "react-router-dom";
 import About from "./components/about/About";
 import SingleProductPage from "./components/SingleProductPage";
-import Footer from "./components/Footer";
 import Contact from "./components/contact/Contact";
-import Cursor from "./layout/Cursor";
-import BtnScrollToTop from "./layout/BtnScrollToTop";
-import CartContext from "./state-mangment/CartContext";
 import CartPage from "./components/Cart/CartPage";
 import Toasts from "./layout/Toasts";
+import Profile from "./components/profile/Profile";
+import Home from "./components/home/Home";
+import AuthModal from "./components/auth/AuthModal";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-import ToastContext from "./state-mangment/ToastContext";
-import ProductsContext from "./state-mangment/ProductsContext";
-import LoaderContext from "./state-mangment/LoaderContext";
-import AuthContext from "./state-mangment/AuthContext";
-import AuthModal from "./components/auth/AuthModal";
-import AuthModalContext from "./state-mangment/AuthModalContentContext";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import NotFoundPage from "./components/404page/NotFoundPage";
+import GlobalContext from "./state-mangment/GlobalContext";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+
+    children: [
+      {
+        index: true,
+        element: (
+          <>
+            <Slider />
+            <CardsContainer />
+          </>
+        ),
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "SingleProductPage/:productId",
+        element: <SingleProductPage />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "cart",
+        element: <CartPage />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
     <>
-      <BtnScrollToTop />
-      {/* cursor shape */}
-      <Cursor />
-
-      <AuthContext>
-        <LoaderContext>
-          <ProductsContext>
-            <CartContext>
-              <ToastContext>
-                <Toasts />
-                <AuthModalContext>
-                  <AuthModal />
-                  <Nav />
-                </AuthModalContext>
-                <div style={{ minHeight: "50svh", marginTop: "52px" }}>
-                  <Routes>
-                    <Route
-                      path="/"
-                      element={
-                        <>
-                          <Slider />
-                          <CardsContainer />
-                        </>
-                      }
-                    />
-                    <Route
-                      path="About"
-                      element={
-                        <>
-                          <About />
-                        </>
-                      }
-                    />
-                    <Route
-                      path="/SingleProductPage/:productId"
-                      element={
-                        <>
-                          <SingleProductPage />
-                        </>
-                      }
-                    />
-
-                    <Route
-                      path="/contact"
-                      element={
-                        <>
-                          <Contact />
-                        </>
-                      }
-                    />
-
-                    <Route
-                      path="/cart"
-                      element={
-                        <>
-                          <CartPage />
-                        </>
-                      }
-                    />
-                  </Routes>
-                </div>
-              </ToastContext>
-            </CartContext>
-          </ProductsContext>
-        </LoaderContext>
-
-        <Footer />
-      </AuthContext>
+      <GlobalContext>
+        <Toasts />
+        <AuthModal />
+        <RouterProvider router={router} />
+      </GlobalContext>
     </>
   );
 }

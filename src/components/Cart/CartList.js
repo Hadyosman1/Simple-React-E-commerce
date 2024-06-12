@@ -46,11 +46,7 @@ function CartList() {
   const cartList = cartProducts.map((pro) => (
     <div key={pro._id} className="pro-in-list">
       <div className="position-relative">
-        <img
-          src={`https://node-server-32yn.onrender.com/uploads/${pro.image}`}
-          alt={pro.title}
-          className="me-2"
-        />{" "}
+        <img src={pro.image} alt={pro.title} className="me-2" />
         <div className=" quantity">
           <h3 className="fs-6 text-light fw-semibold text-center m-0">
             {pro.quantity}

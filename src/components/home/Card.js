@@ -74,7 +74,7 @@ export default function Card(props) {
       if (product._id === props.id) {
         return {
           ...product,
-          rating: { ...product.rating, count: (product.rating.count - 1) },
+          rating: { ...product.rating, count: product.rating.count - 1 },
         };
       }
 
@@ -104,7 +104,7 @@ export default function Card(props) {
           >
             <img
               loading={"lazy"}
-              src={`https://node-server-32yn.onrender.com/uploads/${props.image}`}
+              src={props.image}
               className="zoom-in-img"
               style={{
                 width: "100%",
@@ -131,14 +131,22 @@ export default function Card(props) {
               description
             </span>
             <p
-              className={` mb-0  ${
-                isDesHide && props.media !== "single" && "card-desc text-clamp"
+              onClick={
+                props.media !== "single" && props.description.length >= 100
+                  ? handleDes
+                  : () => console.log(" ")
+              }
+              className={` mb-0  pointer ${
+                isDesHide &&
+                props.media !== "single" &&
+                props.description.length >= 100 &&
+                "card-desc text-clamp"
               } `}
             >
               {props.description}
             </p>
 
-            {props.media !== "single" && (
+            {props.media !== "single" && props.description.length >= 100 && (
               <p onClick={handleDes} className="pointer show-more mt-0">
                 See {isDesHide ? "more" : "less"} ...
               </p>
@@ -146,8 +154,9 @@ export default function Card(props) {
 
             <hr className="text-primary " />
 
-            <h6 className="card-title fw-bold text-primary text-opacity-75 text-capitalize ">
-              <span className="fw-bold text-primary fs-5">Category:</span>{" "}
+            <h6 style={{ color: "#78290F" }} className="card-title fw-bold text-opacity-75 text-capitalize ">
+              
+              <span  className="fw-bold text-primary fs-5">Category:</span>{" "}
               {props.category}
             </h6>
             <hr className="text-primary" />

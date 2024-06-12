@@ -1,5 +1,5 @@
 ::-webkit-scrollbar {
-  width: 10px; /* عرض شريط التمرير */
+  width: 8px; /* عرض شريط التمرير */
 }
 
 ::-webkit-scrollbar-track {
@@ -17,6 +17,80 @@
 
 ::selection {
   background-color: transparent;
+}
+
+.btn-register {
+  color: white;
+  --bs-btn-bg: #cf5228;
+  --bs-btn-border-color: rgba(255, 255, 255, 0.479);
+  &:hover {
+    background-color: #ab2b00;
+    color: white;
+  }
+}
+
+.text-orange {
+  color: #cf5228;
+}
+
+.bg-orange {
+  background-color: #cf5228;
+}
+
+.btn-login {
+  color: white;
+  --bs-btn-bg: #178553;
+  --bs-btn-border-color: rgba(255, 255, 255, 0.479);
+  &:hover {
+    background-color: #016838;
+    color: white;
+  }
+}
+
+fieldset:has(.password-input-field) {
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #dfdfdf;
+
+  input,
+  input:focus {
+    border: initial;
+    border-inline-end: 1px solid #dfdfdf;
+  }
+
+  input:focus {
+    box-shadow: initial;
+  }
+}
+
+fieldset:has(.password-input-field:focus) {
+  border: 1px solid #6cacf1;
+  box-shadow: 0 0 2px 4px #6cacf16a;
+
+  input {
+    border-color: inherit;
+  }
+}
+
+.my-tooltip {
+  border-radius: 4px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.4s;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    translate: 100% -50%;
+    border: 12px solid;
+    border-color: transparent transparent transparent #87939e;
+  }
+}
+
+#edit-picture:hover .my-tooltip {
+  visibility: visible;
+  opacity: 1;
 }
 
 .zoom-in-img {
@@ -92,6 +166,7 @@ code {
     border-color: #fff;
   }
 }
+
 .nav-ul .nav-item a.active {
   border-bottom: 3px solid #fff;
 }
@@ -133,8 +208,16 @@ code {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: start;
       margin-inline: auto;
+      li.nav-item {
+        min-width: 30%;
+
+        a {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
     }
   }
 }
@@ -193,7 +276,13 @@ h2.my-heading {
 
 @media (width < 700px) {
   h2.my-heading {
-    font-size: 2.7rem;
+    font-size: 2.5rem;
+    -webkit-text-stroke-width: 1.5px;
+
+    &::before,
+    &::after {
+      display: none;
+    }
   }
   span.my-heading {
     font-size: 2.2rem;
@@ -208,8 +297,9 @@ h2.my-heading {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 0px;
-    box-shadow: 0 -2px 15px 5px #02296c;
+    height: 100%;
+    background: linear-gradient(to top, #ffffff 6%, transparent);
+    /* box-shadow: 0 -2px 15px 5px #02296c; */
   }
 }
 
@@ -268,6 +358,7 @@ hr.text-primary {
   padding-top: 5px;
   text-transform: capitalize;
   transition: 0.3s;
+  color: #2367e3;
 
   &:hover {
     color: #014cce;
@@ -324,7 +415,7 @@ footer {
         &::before {
           width: 15px;
           height: 15px;
-          background-color: #01497c;
+          background-color: #377dff;
           border-radius: 50%;
           z-index: 1;
           border: 2px solid #fff;
@@ -378,9 +469,12 @@ footer {
             cursor: pointer;
             transition: color 0.3s;
             margin-bottom: 0.6rem;
+            width: fit-content;
+            border-bottom: 2.5px solid transparent;
 
             &:hover {
-              color: #61dafb;
+              color: #377dff;
+              border-color: #377dff;
             }
           }
         }
@@ -400,7 +494,7 @@ footer {
           cursor: pointer;
 
           &:hover {
-            color: #61dafb;
+            color: #377dff;
           }
         }
       }
@@ -494,6 +588,105 @@ footer {
 }
 /* end loader  */
 
+/* start small loader  */
+.small-spinner {
+  position: relative;
+  width: 5px;
+  height: 5px;
+}
+
+.small-spinner div {
+  position: absolute;
+  width: 50%;
+  height: 150%;
+  background: #000000;
+  transform: rotate(calc(var(--rotation) * 1deg))
+    translate(0, calc(var(--translation) * 1%));
+  animation: spinner-fzua35 1s calc(var(--delay) * 1s) infinite ease;
+}
+
+.small-spinner div:nth-child(1) {
+  --delay: 0.1;
+  --rotation: 36;
+  --translation: 150;
+}
+
+.small-spinner div:nth-child(2) {
+  --delay: 0.2;
+  --rotation: 72;
+  --translation: 150;
+}
+
+.small-spinner div:nth-child(3) {
+  --delay: 0.3;
+  --rotation: 108;
+  --translation: 150;
+}
+
+.small-spinner div:nth-child(4) {
+  --delay: 0.4;
+  --rotation: 144;
+  --translation: 150;
+}
+
+.small-spinner div:nth-child(5) {
+  --delay: 0.5;
+  --rotation: 180;
+  --translation: 150;
+}
+
+.small-spinner div:nth-child(6) {
+  --delay: 0.6;
+  --rotation: 216;
+  --translation: 150;
+}
+
+.small-spinner div:nth-child(7) {
+  --delay: 0.7;
+  --rotation: 252;
+  --translation: 150;
+}
+
+.small-spinner div:nth-child(8) {
+  --delay: 0.8;
+  --rotation: 288;
+  --translation: 150;
+}
+
+.small-spinner div:nth-child(9) {
+  --delay: 0.9;
+  --rotation: 324;
+  --translation: 150;
+}
+
+.small-spinner div:nth-child(10) {
+  --delay: 1;
+  --rotation: 360;
+  --translation: 150;
+}
+
+@keyframes spinner-fzua35 {
+  0%,
+  10%,
+  20%,
+  30%,
+  50%,
+  60%,
+  70%,
+  80%,
+  90%,
+  100% {
+    transform: rotate(calc(var(--rotation) * 1deg))
+      translate(0, calc(var(--translation) * 1%));
+  }
+
+  50% {
+    transform: rotate(calc(var(--rotation) * 1deg))
+      translate(0, calc(var(--translation) * 1.5%));
+  }
+}
+/* end small loader  */
+
 .btn-primary {
   background-color: #025c9b !important;
   border-color: #025c9b !important;
@@ -553,6 +746,7 @@ footer {
   padding: 4px 8px;
   box-shadow: 0 0 17px #00000091;
   outline: 1px solid #eee;
+  z-index: 999999;
 
   > h2 {
     padding: 10px;
@@ -618,7 +812,7 @@ footer {
 
       img {
         max-width: 100px;
-        aspect-ratio: 4/4;
+        aspect-ratio: 1;
         border-radius: 10px;
         box-shadow: 0 0 10px #00000060;
         object-fit: contain;
@@ -688,12 +882,14 @@ footer {
 /* toast */
 .toasts-parent {
   position: fixed;
-  z-index: 999;
+  z-index: 9999;
   width: 290px;
   bottom: 80px;
   right: 20px;
   height: fit-content;
+}
 
+.toasts-parent.overlay {
   &::after {
     content: "";
     position: absolute;
@@ -748,3 +944,14 @@ footer {
 }
 
 /* toast */
+.drop-down-profile {
+  transition: all 0.3s;
+  bottom: 0;
+  left: 50%;
+  translate: -75% 140%;
+  z-index: 99999;
+}
+
+.drop-down-hidden {
+  scale: 0;
+}
