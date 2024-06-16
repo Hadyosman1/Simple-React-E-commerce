@@ -108,7 +108,7 @@ export default function CardsContainer() {
 
   return (
     <>
-      <div className="container">
+      <div className="container overflow-hidden">
         <div className="row">
           <h2 className="my-heading">Our Products</h2>
         </div>

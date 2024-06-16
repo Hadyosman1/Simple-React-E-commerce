@@ -80,7 +80,7 @@ const Nav = () => {
         className="border-bottom border-1 fixed-top "
       >
         <nav className="navbar navbar-expand-lg container">
-          <div className="container-fluid  ">
+          <div className="container-fluid ">
             <div className="d-flex align-items-center ">
               <NavLink
                 className="navbar-brand fw-bold text-light d-flex align-items-center "
@@ -155,7 +155,7 @@ const Nav = () => {
                 </li>
 
                 {!isLoggedIn && (
-                  <ul className="list-unstyled d-flex list-unstyled gap-1 align-items-center justify-content-center flex-column flex-lg-row ms-2">
+                  <ul className="list-unstyled d-flex list-unstyled gap-1 align-items-center justify-content-center flex-column flex-lg-row ms-2 mt-3 mt-lg-0">
                     <li className="nav-item ">
                       <button
                         onClick={() => {
