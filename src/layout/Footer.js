@@ -11,7 +11,7 @@ export default function Footer() {
             <img
               className="rounded footer-logo"
               width="100px"
-              src="./assets/logo.svg"
+              src="/assets/logo.svg"
               alt="logo"
             />
           </Link>

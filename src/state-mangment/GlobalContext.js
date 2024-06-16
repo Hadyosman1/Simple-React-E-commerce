@@ -8,21 +8,19 @@ import ToastContext from "./ToastContext";
 
 function GlobalContext({ children }) {
   return (
-    <LightBoxModalContext>
-      <AuthContext>
-        <LoaderContext>
-          <ProductsContext>
-            <CartContext>
-              <ToastContext>
-                <AuthModalContext>
-                  {children}
-                </AuthModalContext>
-              </ToastContext>
-            </CartContext>
-          </ProductsContext>
-        </LoaderContext>
-      </AuthContext>
-    </LightBoxModalContext>
+    <ToastContext>
+      <LightBoxModalContext>
+        <AuthContext>
+          <LoaderContext>
+            <ProductsContext>
+              <CartContext>
+                <AuthModalContext>{children}</AuthModalContext>
+              </CartContext>
+            </ProductsContext>
+          </LoaderContext>
+        </AuthContext>
+      </LightBoxModalContext>
+    </ToastContext>
   );
 }
 

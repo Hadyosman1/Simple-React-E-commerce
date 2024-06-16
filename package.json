@@ -6,7 +6,9 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
+    "dotenv": "^16.4.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
@@ -20,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://node-server-32yn.onrender.com",
+  "proxy": "https://node-server-seven-teal.vercel.app/",
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -10,7 +10,7 @@ import SmallLodaer from "../layout/SmallLodaer";
 const Nav = () => {
   const { cartProducts } = useContext(cartProductsContext);
   const {
-    auth: { isLoggedIn, user, token },
+    auth: { isLoggedIn, user },
     setAuth,
   } = useContext(authContext);
   const { setToasts } = useContext(toastContext);
@@ -24,11 +24,11 @@ const Nav = () => {
     try {
       setIsLoaderVisible(true);
       const res = await fetch(
-        `https://node-server-32yn.onrender.com/api/users/logout/${user._id}`,
+        `${process.env.REACT_APP_API_URL}/api/users/logout/${user._id}`,
         {
-          method: "post",
+          method: "POST",
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${user.token}`,
             "Content-Type": "application/json",
           },
         }
@@ -46,7 +46,7 @@ const Nav = () => {
         setToasts((prev) => [
           ...prev,
           {
-            title: "Hi  😊",
+            title: "Hi 😊",
             message: `you logged out successfully... 👍 `,
             type: "orange",
             id: Date.now(),
@@ -89,7 +89,7 @@ const Nav = () => {
                 <img
                   className="rounded"
                   width="85px"
-                  src="./assets/logo.svg"
+                  src="/assets/logo.svg"
                   alt="logo"
                 />
               </NavLink>
@@ -197,6 +197,7 @@ const Nav = () => {
                       objectFit: "contain",
                       border: "2.5px solid #e6e6e6",
                       borderRadius: "50%",
+                      background: "#d6d6d6",
                     }}
                     src={user.avatar}
                     alt="profile"
@@ -219,15 +220,7 @@ const Nav = () => {
                         className="text-primary nav-link fs-6 fw-semibold m-0 d-flex justify-content-between align-items-center px-1 gap-3"
                       >
                         {user.firstName} {user.lastName}
-                        <i
-                          style={
-                            {
-                              //   borderRadius: "50%",
-                              // border: "1px solid #e7e7e7",
-                            }
-                          }
-                          className=" fa-solid fa-user p-1"
-                        ></i>
+                        <i className=" fa-solid fa-user p-1"></i>
                       </NavLink>
                     </li>
                     <li className="nav-item flex-grow-1   ">
@@ -273,8 +266,11 @@ const LogOutModal = ({ handleLogout, isLoaderVisible }) => {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h1 className="modal-title fs-5" id="staticBackdropLabel">
-                are you sure !
+              <h1
+                className="modal-title fw-bold fs-5 text-danger"
+                id="staticBackdropLabel"
+              >
+                Are You Sure !
               </h1>
               <button
                 ref={closeBtnRef}

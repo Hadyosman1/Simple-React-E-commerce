@@ -16,16 +16,26 @@
 }
 
 ::selection {
-  background-color: transparent;
+  background-color: #3333338a;
 }
 
 .btn-register {
-  color: white;
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: #eee;
   --bs-btn-bg: #cf5228;
-  --bs-btn-border-color: rgba(255, 255, 255, 0.479);
-  &:hover {
-    background-color: #ab2b00;
-    color: white;
+  --bs-btn-border-color: #878787;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #af2e02;
+  --bs-btn-hover-border-color: #e7e7e7;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: #eee;
+  --bs-btn-active-bg: #cf5228;
+  --bs-btn-active-border-color: #222;
+
+  &:disabled {
+    background-color: #cf52289d !important;
+    opacity: 0.5 !important;
+    pointer-events: none !important;
   }
 }
 
@@ -38,13 +48,28 @@
 }
 
 .btn-login {
-  color: white;
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: #eee;
   --bs-btn-bg: #178553;
-  --bs-btn-border-color: rgba(255, 255, 255, 0.479);
-  &:hover {
-    background-color: #016838;
-    color: white;
+  --bs-btn-border-color: #878787;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #016838;
+  --bs-btn-hover-border-color: #e7e7e7;
+  --bs-btn-focus-shadow-rgb: #000;
+  --bs-btn-active-color: #eee;
+  --bs-btn-active-bg: #00a85d;
+  --bs-btn-active-border-color: #222;
+
+  &:disabled {
+    background-color: #016838 !important;
+    opacity: 0.5 !important;
+    pointer-events: none !important;
   }
+}
+
+.warning {
+  color: #cf2828 !important;
+  border: 1.8px solid currentColor !important;
 }
 
 fieldset:has(.password-input-field) {
@@ -764,7 +789,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-height: 70vh;
+    max-height: 60vh;
     overflow: hidden auto;
     min-width: 600px;
 

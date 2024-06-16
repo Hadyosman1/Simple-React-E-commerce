@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Pagination, Navigation } from "swiper/modules";
 
 const Slider = () => {
   return (
@@ -19,19 +19,15 @@ const Slider = () => {
         spaceBetween={10}
         loop={true}
         centeredSlides={true}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
         pagination={{
           clickable: true,
         }}
         navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Pagination, Navigation]}
         className="mySwiper"
       >
         <SwiperSlide>
-          <div style={{ height: "calc(100svh - 55px)" }} className=" ">
+          <div style={{ height: "calc(100svh - 50px)" }} className=" ">
             <img
               style={{ objectFit: "cover" }}
               src="./assets/pic1.jpg"
@@ -41,7 +37,7 @@ const Slider = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div style={{ height: "calc(100svh - 55px)" }} className="">
+          <div style={{ height: "calc(100svh - 50px)" }} className="">
             <img
               style={{ objectFit: "cover" }}
               src="./assets/pic2.jpg"
@@ -51,7 +47,7 @@ const Slider = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div style={{ height: "calc(100svh - 55px)" }} className=" ">
+          <div style={{ height: "calc(100svh - 50px)" }} className=" ">
             <img
               style={{ objectFit: "cover" }}
               src="./assets/pic3.jpg"
@@ -61,7 +57,7 @@ const Slider = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div style={{ height: "calc(100svh - 55px)" }} className=" ">
+          <div style={{ height: "calc(100svh - 50px)" }} className=" ">
             <img
               style={{ objectFit: "cover" }}
               src="./assets/pic4.jpg"
@@ -70,8 +66,8 @@ const Slider = () => {
             />
           </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div style={{ height: "calc(100svh - 55px)" }} className=" ">
+        {/* <SwiperSlide>
+          <div style={{ height: "calc(100svh - 50px)" }} className=" ">
             <img
               style={{ objectFit: "cover" }}
               src="./assets/pic5.jpg"
@@ -79,7 +75,7 @@ const Slider = () => {
               alt="products"
             />
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </div>
   );

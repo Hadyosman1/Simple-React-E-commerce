@@ -3,11 +3,12 @@ import { createContext, useState } from "react";
 export const lightBoxModalContext = createContext();
 
 const LightBoxModalContext = ({ children }) => {
-  const [isLightBoxVisible, setIsLightBoxVisible] = useState(false);
+  const [lightBox, setLightBox] = useState({
+    isVisible: false,
+    content: <></>,
+  });
   return (
-    <lightBoxModalContext.Provider
-      value={{ isLightBoxVisible, setIsLightBoxVisible }}
-    >
+    <lightBoxModalContext.Provider value={{ lightBox, setLightBox }}>
       {children}
     </lightBoxModalContext.Provider>
   );

@@ -1,6 +1,6 @@
-const SmallLodaer = () => {
+const SmallLodaer = ({ translate }) => {
   return (
-    <div className="small-spinner">
+    <div style={{ translate }} className="small-spinner">
       <div></div>
       <div></div>
       <div></div>

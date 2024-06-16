@@ -11,9 +11,25 @@ const AuthModal = () => {
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
   const [isPassVisible, setIsPassVisible] = useState(false);
   const closeBtnRef = useRef();
+  const [UploadedImage, setUploadedImage] = useState({});
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const fileSize = e.target.avatar?.files[0]?.size / 1024 / 1024;
+    if (e.target.avatar && fileSize > 3) {
+      // 3MB
+      setToasts((prev) => [
+        ...prev,
+        {
+          id: Date.now(),
+          type: "danger",
+          title: "Error 🤷‍♂️",
+          message: "File size must be less than 3MB",
+        },
+      ]);
+      return;
+    }
 
     let json;
     let formData = new FormData();
@@ -42,11 +58,10 @@ const AuthModal = () => {
       }
 
       const res = await fetch(
-        `https://node-server-32yn.onrender.com/api/users/${loginOrRegister}`,
+        `${process.env.REACT_APP_API_URL}/api/users/${loginOrRegister}`,
         fetchConfig
       );
       const data = await res.json();
-      console.log(data);
       if (res.ok) {
         handleSuccess(e, data);
         closeBtnRef.current.click();
@@ -60,7 +75,7 @@ const AuthModal = () => {
         ...prev,
         {
           title: "oops !",
-          message: `Error ${error} 🤷‍♀️`,
+          message: `${error} 🤷‍♀️`,
           type: "danger",
           id: Date.now(),
         },
@@ -194,7 +209,12 @@ const AuthModal = () => {
                   <i
                     onMouseDown={() => setIsPassVisible(!isPassVisible)}
                     onMouseUp={() => setIsPassVisible(!isPassVisible)}
-                    style={{ display: "grid", placeItems: "center",width:"38px",maxWidth:"38px" }}
+                    style={{
+                      display: "grid",
+                      placeItems: "center",
+                      width: "38px",
+                      maxWidth: "38px",
+                    }}
                     className={` fa-solid ${
                       isPassVisible ? "fa-eye-slash" : "fa-eye"
                     } px-2 pointer `}
@@ -207,12 +227,21 @@ const AuthModal = () => {
                     Image
                   </label>
                   <input
+                    onChange={(e) => setUploadedImage(e.target.files[0])}
                     accept="image/*"
                     name="avatar"
                     className="form-control form-control-sm"
                     id="image"
                     type="file"
                   />
+
+                  {UploadedImage.name && (
+                    <img
+                      className="img-fluid mt-3 rounded"
+                      src={URL.createObjectURL(UploadedImage)}
+                      alt="uploaded"
+                    />
+                  )}
                 </div>
               )}
               <div className="modal-footer p-0 pt-2 mt-3">
@@ -232,7 +261,7 @@ const AuthModal = () => {
                   type="submit"
                   disabled={isLoaderVisible}
                   className={`btn text-light btn-${
-                    loginOrRegister === "login" ? "primary" : "register"
+                    loginOrRegister === "login" ? "login" : "register"
                   }`}
                 >
                   {loginOrRegister === "login" ? "login" : "register"}
