@@ -66,7 +66,7 @@ const Slider = () => {
             />
           </div>
         </SwiperSlide>
-        {/* <SwiperSlide>
+        <SwiperSlide>
           <div style={{ height: "calc(100svh - 50px)" }} className=" ">
             <img
               style={{ objectFit: "cover" }}
@@ -75,9 +75,9 @@ const Slider = () => {
               alt="products"
             />
           </div>
-        </SwiperSlide> */}
+        </SwiperSlide>
       </Swiper>
     </div>
   );
 };
-export default React.memo(Slider);
+export default Slider;

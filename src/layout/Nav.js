@@ -205,10 +205,14 @@ const Nav = () => {
                   />
 
                   <ul
-                    style={{ maxWidth: "96svw" }}
+                    style={{
+                      maxWidth: "96svw",
+                      minWidth: "180px",
+                      border: ".7px solid #01497c",
+                    }}
                     className={`${
                       !isDropDownVisible && "drop-down-hidden"
-                    } position-absolute p-1 gap-3 list-unstyled bg-light drop-down-profile shadow-lg border-1 border border-dark-subtle rounded`}
+                    } position-absolute p-2 gap-3 list-unstyled bg-light drop-down-profile shadow-lg rounded`}
                   >
                     <li className="mb-2 border-1 border-bottom border-dark-subtle py-1 ">
                       <NavLink
@@ -221,6 +225,19 @@ const Nav = () => {
                       >
                         {user.firstName} {user.lastName}
                         <i className=" fa-solid fa-user p-1"></i>
+                      </NavLink>
+                    </li>
+                    <li className="mb-2 border-1 border-bottom border-dark-subtle pb-1">
+                      <NavLink
+                        style={{
+                          whiteSpace: "nowrap",
+                          textOverflow: "ellipsis",
+                        }}
+                        to="profile/edit"
+                        className="text-primary nav-link fs-6 fw-semibold m-0 d-flex justify-content-between align-items-center px-1 gap-3"
+                      >
+                        Settinges
+                        <i className=" fa-solid fa-gear p-1"></i>
                       </NavLink>
                     </li>
                     <li className="nav-item flex-grow-1   ">

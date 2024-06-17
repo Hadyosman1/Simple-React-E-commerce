@@ -61,7 +61,7 @@ export default function Contact() {
               <div className="aos-item" data-aos="fade-up" data-aos-delay="800">
                 <div className="mt-4 w-100 aos-item__inner">
                   <iframe
-                  loading={"lazy"}
+                    loading={"lazy"}
                     style={{ maxWidth: "100%" }}
                     title="map"
                     className="hvr-shadow"
@@ -81,7 +81,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="col-xl-6">
+            <div data-aos="fade-up" data-aos-delay="200" className="col-xl-6">
               <h2 className="pb-4 text-primary fw-bold">Leave a message</h2>
               <div className="row g-3">
                 <div className="col-6 mb-3">
@@ -167,6 +167,7 @@ export default function Contact() {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
+                  style={{ maxHeight: "158px" }}
                 ></textarea>
               </div>
               <button type="button" className="btn btn-primary">

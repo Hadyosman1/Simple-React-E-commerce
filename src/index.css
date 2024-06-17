@@ -1,6 +1,3 @@
-body {
-  overflow: hidden;
-}
 
 ::-webkit-scrollbar {
   width: 8px; /* عرض شريط التمرير */
@@ -27,11 +24,11 @@ body {
   --bs-btn-font-weight: 600;
   --bs-btn-color: #eee;
   --bs-btn-bg: #cf5228;
-  --bs-btn-border-color: #878787;
+  --bs-btn-border-color: #fff;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #af2e02;
   --bs-btn-hover-border-color: #e7e7e7;
-  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-focus-shadow-rgb: #fff;
   --bs-btn-active-color: #eee;
   --bs-btn-active-bg: #cf5228;
   --bs-btn-active-border-color: #222;
@@ -55,7 +52,7 @@ body {
   --bs-btn-font-weight: 600;
   --bs-btn-color: #eee;
   --bs-btn-bg: #178553;
-  --bs-btn-border-color: #878787;
+  --bs-btn-border-color: #fff;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #016838;
   --bs-btn-hover-border-color: #e7e7e7;

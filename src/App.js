@@ -67,8 +67,7 @@ const router = createBrowserRouter([
 function App() {
   useEffect(() => {
     AOS.init({
-      duration: 500,
-      offset: 0,
+      duration: 600,
       easing: "ease-in-out",
     });
 
