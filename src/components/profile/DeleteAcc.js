@@ -27,11 +27,7 @@ const DeleteAcc = () => {
       );
 
       const data = await res.json();
-
-      if (data.msg) {
-        throw data;
-      }
-
+console.log("data",data);
       if (res.ok) {
         //---------
         localStorage.removeItem("token");
@@ -53,12 +49,16 @@ const DeleteAcc = () => {
           },
         ]);
       }
+
+      if (data.msg) {
+        throw data;
+      }
     } catch (error) {
       setToasts((prev) => [
         ...prev,
         {
           title: "oops !",
-          message: `Error${error.msg || error.message} 🤷‍♀️`,
+          message: `Error ${error.msg ?? error.message ?? error} 🤷‍♀️`,
           type: "danger",
           id: Date.now(),
         },

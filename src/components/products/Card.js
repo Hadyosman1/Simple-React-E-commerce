@@ -88,7 +88,7 @@ export default function Card(props) {
   return (
     <>
       <div
-      data-aos-offset="0"
+        data-aos-offset="0"
         data-aos={props.animationType}
         className={
           props.media === "single"
@@ -161,9 +161,25 @@ export default function Card(props) {
             </h6>
             <hr className="text-primary" />
 
-            <h6 className="card-title fw-bold text-warning text-capitalize ">
-              <span className="fw-bold text-primary fs-5">rate:</span>{" "}
-              {props.rate} ⭐
+            <h6 className="card-title fw-bold  text-capitalize ">
+              <span className="fw-bold text-primary fs-6">rating:</span>{" "}
+              <span
+                style={{
+                  width: "fit-content",
+                  backgroundClip: "text",
+                  backgroundImage: `linear-gradient(to right,#FFC107 ${
+                    props.rate * 10
+                  }% ,transparent ${props.rate * 10 + 1}% )`,
+                  color: "transparent",
+                  webkitTextStroke: "1px #fed867",
+                }}
+              >
+                <i className="fa-solid fa-star"></i>
+                <i className="fa-solid fa-star"></i>
+                <i className="fa-solid fa-star"></i>
+                <i className="fa-solid fa-star"></i>
+                <i className="fa-solid fa-star"></i>
+              </span>
             </h6>
             {props.media !== "single" && (
               <>

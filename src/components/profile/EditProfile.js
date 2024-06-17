@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { lightBoxModalContext } from "../../state-mangment/LightBoxModalContext";
 import { Link, redirect, useNavigate } from "react-router-dom";
 import ProfilePic from "./ProfilePic";
@@ -22,6 +22,8 @@ const EditProfile = () => {
   const [isPassVisible, setIsPassVisible] = useState(false);
   const [isConfirmPassVisible, setIsConfirmPassVisible] = useState(false);
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
+  const [isCofirmPassWrong, setIsConfirmPassWrong] = useState(false);
+  const paraWarningRef = useRef();
 
   useEffect(() => {
     if (!user.token) {
@@ -40,7 +42,8 @@ const EditProfile = () => {
       const confirmPassword = myForm.confirmPass?.value;
 
       if (!isPasswordFieldHidden && password !== confirmPassword) {
-        myForm.confirmPass.parentElement.classList.add("warning");
+        setIsConfirmPassWrong(true);
+
         return false;
       }
       setIsLoaderVisible(true);
@@ -296,10 +299,14 @@ const EditProfile = () => {
                       >
                         Confirm New Password
                       </label>
-                      <fieldset className="mb-3 d-flex p-0 ">
+                      <fieldset
+                        className={`mb-1 d-flex p-0 ${
+                          isCofirmPassWrong && "warning"
+                        }`}
+                      >
                         <input
-                          onChange={(e) => {
-                            e.target.parentElement.classList.remove("warning");
+                          onChange={() => {
+                            setIsConfirmPassWrong(false);
                           }}
                           placeholder="min length 8 digits"
                           required={!isPasswordFieldHidden}
@@ -327,6 +334,11 @@ const EditProfile = () => {
                           } px-2 pointer `}
                         ></i>
                       </fieldset>
+                      {isCofirmPassWrong && (
+                        <p ref={paraWarningRef} className="text-danger m-0">
+                          Wrong Confirm Password..!
+                        </p>
+                      )}
                     </div>
                     {/*field*/}
                   </>
