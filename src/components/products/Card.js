@@ -114,31 +114,26 @@ export default function Card(props) {
               {!isTitleHide && <p className="text-primary fs-5 ">less... 🤞</p>}
             </h4>
             <hr className="text-primary m-0" />
+
             <span className="d-block text-primary fw-bold mb-1 fs-4 text-capitalize">
               description
             </span>
             <p
               onClick={
-                props.media !== "single" && props.description.length >= 100
-                  ? handleDes
-                  : () => console.log("")
+                props.media !== "single" ? handleDes : () => console.log("")
               }
-              className={` mb-0  pointer ${
-                isDesHide &&
-                props.media !== "single" &&
-                props.description.length >= 100 &&
-                "card-desc text-clamp"
+              className={` mb-0 ${props.media !== "single" && "pointer"} ${
+                isDesHide && props.media !== "single" && "card-desc text-clamp"
               } `}
             >
               {props.description}
             </p>
 
-            {props.media !== "single" && props.description.length >= 100 && (
+            {props.media !== "single" && (
               <p onClick={handleDes} className="pointer show-more mt-0">
                 See {isDesHide ? "more" : "less"} ...
               </p>
             )}
-
             <hr className="text-primary " />
 
             <h6
@@ -171,7 +166,7 @@ export default function Card(props) {
                     props.rate * 10
                   }% ,transparent ${props.rate * 10 + 1}% )`,
                   color: "transparent",
-                  webkitTextStroke: "1px #fed867",
+                  WebkitTextStroke: "1px #fed867",
                 }}
               >
                 <i className="fa-solid fa-star"></i>
@@ -190,7 +185,6 @@ export default function Card(props) {
                 >
                   More Details ... 🕵️‍♀️
                 </Link>
-                <hr className="text-primary m-2" />{" "}
               </>
             )}
             <button

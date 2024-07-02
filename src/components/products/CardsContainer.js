@@ -61,41 +61,43 @@ export default function CardsContainer() {
 
   let filterOrAll = filterArr.length > 0 ? filterArr : products;
 
-  let productsList = filterOrAll.map(
-    (
-      {
-        _id,
-        title,
-        price,
-        description,
-        category,
-        image,
-        rating: { rate, count },
-      },
-      i
-    ) => {
-      return (
-        <Card
-          key={_id}
-          title={title}
-          price={price}
-          description={description}
-          category={category}
-          image={image}
-          rate={rate}
-          count={count}
-          id={_id}
-          animationType={i % 2 === 0 ? "fade-right" : "fade-left"}
-        />
-      );
-    }
-  );
+  let productsList = filterOrAll
+    .toReversed()
+    .map(
+      (
+        {
+          _id,
+          title,
+          price,
+          description,
+          category,
+          image,
+          rating: { rate, count },
+        },
+        i
+      ) => {
+        return (
+          <Card
+            key={_id}
+            title={title}
+            price={price}
+            description={description}
+            category={category}
+            image={image}
+            rate={rate}
+            count={count}
+            id={_id}
+            animationType={i % 2 === 0 ? "fade-right" : "fade-left"}
+          />
+        );
+      }
+    );
 
   let cats = categories.map(({ name }) => {
     return (
       <button
-        onClick={() => filterByCategory(name)}
         key={name}
+        onClick={() => filterByCategory(name)}
         type="button"
         className={` text-capitalize btn btn-primary rounded-2 ${
           filterName === name && "active-cat"
@@ -113,7 +115,7 @@ export default function CardsContainer() {
           <h2 className="my-heading">Our Products</h2>
         </div>
         <div
-          className="btn-group mt-5 d-flex gap-2 flex-wrap  justify-content-center "
+          className=" mt-5 d-flex gap-2 flex-wrap  justify-content-center "
           role="group"
           aria-label="Basic example"
         >
