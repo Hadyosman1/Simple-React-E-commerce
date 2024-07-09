@@ -19,6 +19,10 @@
   background-color: #3333338a;
 }
 
+img::selection {
+  background-color: transparent;
+}
+
 .btn-register {
   --bs-btn-font-weight: 600;
   --bs-btn-color: #eee;
@@ -426,6 +430,8 @@ footer {
 
     .logo {
       flex-grow: 1;
+      display: flex;
+      align-items: start;
 
       a {
         position: relative;
@@ -536,6 +542,8 @@ footer {
 
     .logo {
       text-align: center;
+      justify-content: center;
+      margin-bottom: 25px;
     }
 
     .lists {

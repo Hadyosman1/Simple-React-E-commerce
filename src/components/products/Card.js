@@ -88,7 +88,7 @@ export default function Card(props) {
   return (
     <>
       <div
-        data-aos-offset="0"
+        data-aos-offset="100"
         data-aos={props.animationType}
         className={
           props.media === "single"

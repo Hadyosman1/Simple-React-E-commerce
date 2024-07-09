@@ -68,7 +68,6 @@ function App() {
   useEffect(() => {
     AOS.init({
       duration: 600,
-      easing: "ease-in-out",
     });
 
     return () => {

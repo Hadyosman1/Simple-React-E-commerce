@@ -99,7 +99,7 @@ export default function CardsContainer() {
         key={name}
         onClick={() => filterByCategory(name)}
         type="button"
-        className={` text-capitalize btn btn-primary rounded-2 ${
+        className={`flex-shrink-0 flex-grow-1 text-capitalize px-3 btn btn-primary rounded-2 ${
           filterName === name && "active-cat"
         } `}
       >
