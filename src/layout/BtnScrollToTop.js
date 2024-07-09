@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 export default function BtnScrollToTop() {
   const btnRef = useRef();
   useEffect(() => {
-    if (btnRef.current) {
+    if (btnRef?.current) {
       btnRef.current.style.scale = "0";
       window.addEventListener("scroll", () => {
         if (window.scrollY > 500) {

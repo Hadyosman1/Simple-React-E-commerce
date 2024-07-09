@@ -88,12 +88,11 @@ export default function Card(props) {
   return (
     <>
       <div
-        data-aos-offset="100"
         data-aos={props.animationType}
         className={
           props.media === "single"
             ? `col-12  col-lg-6 my-0 mb-3`
-            : `col-12 col-md-6  col-lg-4 col-xl-3 px-3 my-2`
+            : `col-12 col-md-6  col-lg-4 col-xl-3 px-2 my-2`
         }
       >
         <div

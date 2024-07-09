@@ -16,7 +16,7 @@ const Slider = () => {
     <div className="shadow">
       <Swiper
         slidesPerView={1}
-        spaceBetween={10}
+        spaceBetween={0}
         loop={true}
         centeredSlides={true}
         pagination={{
@@ -26,7 +26,7 @@ const Slider = () => {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <div style={{ height: "calc(100svh - 50px)" }} className=" ">
             <img
               style={{ objectFit: "cover" }}
@@ -35,7 +35,7 @@ const Slider = () => {
               alt="products"
             />
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
         {/* <SwiperSlide>
           <div style={{ height: "calc(100svh - 50px)" }} className="">
             <img

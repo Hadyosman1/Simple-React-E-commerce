@@ -67,12 +67,8 @@ const router = createBrowserRouter([
 function App() {
   useEffect(() => {
     AOS.init({
-      duration: 600,
+      duration: 500,
     });
-
-    return () => {
-      AOS.refresh();
-    };
   }, []);
 
   return (

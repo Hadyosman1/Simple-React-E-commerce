@@ -87,7 +87,7 @@ export default function CardsContainer() {
             rate={rate}
             count={count}
             id={_id}
-            animationType={i % 2 === 0 ? "fade-right" : "fade-left"}
+            animationType={i % 2 === 0 ? "fade-top" : "fade-bottom"}
           />
         );
       }
@@ -99,9 +99,13 @@ export default function CardsContainer() {
         key={name}
         onClick={() => filterByCategory(name)}
         type="button"
-        className={`flex-shrink-0 flex-grow-1 text-capitalize px-3 btn btn-primary rounded-2 ${
+        className={` flex-shrink-0 flex-grow-1 text-capitalize   btn btn-primary rounded-2 ${
           filterName === name && "active-cat"
         } `}
+        style={{
+          maxWidth: "220px",
+          minWidth:"130px"
+        }}
       >
         {name}
       </button>
@@ -114,16 +118,12 @@ export default function CardsContainer() {
         <div className="row">
           <h2 className="my-heading">Our Products</h2>
         </div>
-        <div
-          className=" mt-5 d-flex gap-2 flex-wrap  justify-content-center "
-          role="group"
-          aria-label="Basic example"
-        >
+        <div className=" mt-5 d-flex gap-2 flex-wrap  justify-content-center ">
           {cats.length !== 0 && (
             <button
               onClick={() => filterByCategory("all")}
               type="button"
-              style={{ minWidth: "150px" }}
+              style={{ minWidth: "100px" }}
               className={`btn btn-primary rounded-2 ${
                 !filterName && "active-cat"
               }`}
@@ -133,7 +133,7 @@ export default function CardsContainer() {
           )}
           {cats}
         </div>
-        <div className="row mt-4">{productsList}</div>
+        <div className="row row-gap-4 mt-4">{productsList}</div>
         {loaderIsVisible && (
           <div className="loader-container row justify-content-center my-5">
             <Loader />

@@ -23,6 +23,7 @@ const EditProfile = () => {
   const [isConfirmPassVisible, setIsConfirmPassVisible] = useState(false);
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
   const [isCofirmPassWrong, setIsConfirmPassWrong] = useState(false);
+  const [isSubmitBtnDisabled, setIsSubmitBtnDisabled] = useState(true);
   const paraWarningRef = useRef();
 
   useEffect(() => {
@@ -30,7 +31,7 @@ const EditProfile = () => {
       navigate("/");
     }
   });
-
+  console.log(isSubmitBtnDisabled);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -174,12 +175,13 @@ const EditProfile = () => {
                     className="form-control"
                     id="first-name"
                     value={formInputs.firstName}
-                    onChange={(e) =>
+                    onChange={(e) => {
+                      setIsSubmitBtnDisabled(false);
                       setFormInputs((prev) => ({
                         ...prev,
                         firstName: e.target.value,
-                      }))
-                    }
+                      }));
+                    }}
                   />
                 </fieldset>
                 <fieldset className="mb-3">
@@ -195,12 +197,13 @@ const EditProfile = () => {
                     className="form-control"
                     id="last-name"
                     value={formInputs.lastName}
-                    onChange={(e) =>
+                    onChange={(e) => {
+                      setIsSubmitBtnDisabled(false);
                       setFormInputs((prev) => ({
                         ...prev,
                         lastName: e.target.value,
-                      }))
-                    }
+                      }));
+                    }}
                   />
                 </fieldset>
                 <button
@@ -231,6 +234,9 @@ const EditProfile = () => {
                       </label>
                       <fieldset className="mb-3 d-flex p-0 ">
                         <input
+                          onChange={() => {
+                            setIsSubmitBtnDisabled(false);
+                          }}
                           placeholder="min length 8 digits"
                           required={!isPasswordFieldHidden}
                           name="oldPassword"
@@ -268,6 +274,9 @@ const EditProfile = () => {
                       </label>
                       <fieldset className="mb-3 d-flex p-0 ">
                         <input
+                          onChange={() => {
+                            setIsSubmitBtnDisabled(false);
+                          }}
                           placeholder="min length 8 digits"
                           required={!isPasswordFieldHidden}
                           name="password"
@@ -306,6 +315,7 @@ const EditProfile = () => {
                       >
                         <input
                           onChange={() => {
+                            setIsSubmitBtnDisabled(false);
                             setIsConfirmPassWrong(false);
                           }}
                           placeholder="min length 8 digits"
@@ -345,8 +355,12 @@ const EditProfile = () => {
                 )}
                 <hr />
                 <div className="d-flex align-items-center">
-                  <button type="submit" className="btn btn-login">
-                    Save Changes
+                  <button
+                    disabled={isSubmitBtnDisabled}
+                    type="submit"
+                    className="btn btn-login"
+                  >
+                    Submit Changes
                   </button>
                   {isLoaderVisible && (
                     <span className="ms-auto">
