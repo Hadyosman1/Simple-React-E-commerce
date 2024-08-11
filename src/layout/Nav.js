@@ -34,7 +34,7 @@ const Nav = () => {
         }
       );
       const data = await res.json();
-      console.log(data);
+
       if (res.ok) {
         localStorage.removeItem("token");
         localStorage.removeItem("user");

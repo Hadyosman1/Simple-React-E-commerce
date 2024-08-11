@@ -7,6 +7,7 @@ import Home from "./components/home/Home";
 import RootLayout from "./layout/RootLayout";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import { myLoader } from "./components/profile/EditProfile";
 

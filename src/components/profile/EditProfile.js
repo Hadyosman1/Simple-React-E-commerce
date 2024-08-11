@@ -31,7 +31,7 @@ const EditProfile = () => {
       navigate("/");
     }
   });
-  console.log(isSubmitBtnDisabled);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -109,7 +109,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <div className="container px-3">
+      <div className="container py-5 px-3">
         <div className="d-flex align-items-center">
           <h2 className="my-4 fw-bold text-primary d-inline-block">
             Edit Profile

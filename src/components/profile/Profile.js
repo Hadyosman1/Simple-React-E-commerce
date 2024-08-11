@@ -22,7 +22,7 @@ const Profile = () => {
   });
 
   return (
-    <main className="container">
+    <main className="container py-5">
       {token ? (
         <div className="row justify-content-center align-items-start px-2 gap-3">
           <div className="col-12 ">

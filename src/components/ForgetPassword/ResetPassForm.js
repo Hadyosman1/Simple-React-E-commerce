@@ -22,7 +22,6 @@ const changePassword = async (
       }
     );
     const data = await res.json();
-    console.log(data);
 
     if (res.ok) {
       setToasts((prev) => [

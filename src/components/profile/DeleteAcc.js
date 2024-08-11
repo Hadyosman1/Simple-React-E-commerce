@@ -27,7 +27,7 @@ const DeleteAcc = () => {
       );
 
       const data = await res.json();
-console.log("data",data);
+      
       if (res.ok) {
         //---------
         localStorage.removeItem("token");
