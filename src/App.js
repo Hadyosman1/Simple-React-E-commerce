@@ -2,14 +2,11 @@ import About from "./components/about/About";
 import SingleProductPage from "./components/products/SingleProductPage";
 import Contact from "./components/contact/Contact";
 import CartPage from "./components/Cart/CartPage";
-import Toasts from "./layout/Toasts";
 import Profile from "./components/profile/Profile";
 import Home from "./components/home/Home";
-import AuthModal from "./components/auth/AuthModal";
 import RootLayout from "./layout/RootLayout";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import { myLoader } from "./components/profile/EditProfile";
 
@@ -20,12 +17,13 @@ import EditProfile from "./components/profile/EditProfile";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-
+    errorElement: <NotFoundPage />,
     children: [
       {
         index: true,
@@ -34,6 +32,7 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <NotFoundPage />,
+        errorElement: <NotFoundPage />,
       },
       {
         path: "about",
@@ -60,6 +59,10 @@ const router = createBrowserRouter([
         element: <EditProfile />,
         loader: myLoader,
       },
+      {
+        path: "forget_password",
+        element: <ForgetPassword />,
+      },
     ],
   },
 ]);
@@ -74,8 +77,6 @@ function App() {
   return (
     <>
       <GlobalContext>
-        <Toasts />
-        <AuthModal />
         <RouterProvider router={router} />
       </GlobalContext>
     </>

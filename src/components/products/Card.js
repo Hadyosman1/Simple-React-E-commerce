@@ -1,22 +1,14 @@
-import { useContext, useState } from "react";
+import { useState, memo, useContext } from "react";
 import { Link } from "react-router-dom";
 import { cartProductsContext } from "../../state-mangment/CartContext";
-import { toastContext } from "../../state-mangment/ToastContext";
-import { productsContext } from "../../state-mangment/ProductsContext";
+
 import ProductImage from "./ProductImage";
 
-export default function Card(props) {
+const Card = (props) => {
   const [isDesHide, setIsDesHide] = useState(true);
   const [isTitleHide, setIsTitleHide] = useState(true);
 
-  //taost
-  const { setToasts } = useContext(toastContext);
-
-  //cart
-  const { cartProducts, setCartProducts } = useContext(cartProductsContext);
-
-  //products
-  const { products, setProducts } = useContext(productsContext);
+  const { handleAddToCart } = useContext(cartProductsContext);
 
   const handleDes = () => {
     setIsDesHide(!isDesHide);
@@ -25,65 +17,6 @@ export default function Card(props) {
   const handleTitle = () => {
     setIsTitleHide(!isTitleHide);
   };
-
-  const handleAddToCart = (e) => {
-    setToasts((prev) => [
-      ...prev,
-      {
-        title: "welcome 😊",
-        message: "added product successfully 🎉",
-        type: "success",
-        id: Date.now(),
-      },
-    ]);
-
-    const pro = cartProducts.find((product) => product._id === props.id);
-
-    if (!pro) {
-      setCartProducts((prev) => {
-        return [
-          ...prev,
-          {
-            _id: props.id,
-            title: props.title,
-            image: props.image,
-            price: props.price,
-            category: props.category,
-            description: props.description,
-            rate: props.rate,
-            quantity: 1,
-          },
-        ];
-      });
-    } else {
-      setCartProducts((prev) => {
-        return prev.map((product) => {
-          if (product._id === pro._id) {
-            return {
-              ...product,
-              quantity: product.quantity + 1,
-            };
-          } else {
-            return product;
-          }
-        });
-      });
-    }
-
-    //decrement count of this product
-    let updatedProductsCount = products.map((product) => {
-      if (product._id === props.id) {
-        return {
-          ...product,
-          rating: { ...product.rating, count: product.rating.count - 1 },
-        };
-      }
-
-      return product;
-    });
-    setProducts(updatedProductsCount);
-  };
-  const product = cartProducts.find((pro) => pro._id === props.id);
 
   return (
     <>
@@ -99,7 +32,7 @@ export default function Card(props) {
           style={{ minHeight: "400px" }}
           className="card rounded-3  p-1 shadow"
         >
-          <ProductImage props={props} />
+          <ProductImage media={props.media} image={props.image} />
           <div className="card-body px-3">
             <h4
               style={{ color: "#78290F", fontWeight: "900" }}
@@ -139,31 +72,31 @@ export default function Card(props) {
               style={{ color: "#78290F" }}
               className="card-title fw-bold text-opacity-75 text-capitalize "
             >
-              <span className="fw-bold text-primary fs-5">Category:</span>{" "}
+              <span className="fw-bold text-primary fs-6">Category :</span>{" "}
               {props.category}
             </h6>
             <hr className="text-primary" />
 
             <h6 className="card-title text-success fw-bold fs-5">
-              <span className="fw-bold fs-5">price:</span> {props.price}$
+              <span className="fw-bold fs-5">price :</span> {props.price}$
             </h6>
             <hr className="text-primary" />
 
             <h6 className="card-title fw-bold text-warning text-capitalize ">
-              <span className="fw-bold text-primary fs-5">stock:</span>{" "}
-              {props.count}
+              <span className="fw-bold text-primary fs-5">stock :</span>{" "}
+              {props.rating.count}
             </h6>
             <hr className="text-primary" />
 
             <h6 className="card-title fw-bold  text-capitalize ">
-              <span className="fw-bold text-primary fs-6">rating:</span>{" "}
+              <span className="fw-bold text-primary fs-6">rating :</span>{" "}
               <span
                 style={{
                   width: "fit-content",
                   backgroundClip: "text",
                   backgroundImage: `linear-gradient(to right,#FFC107 ${
-                    props.rate * 10
-                  }% ,transparent ${props.rate * 10 + 1}% )`,
+                    props.rating.rate * 10
+                  }% ,transparent ${props.rating.rate * 10 + 1}% )`,
                   color: "transparent",
                   WebkitTextStroke: "1px #fed867",
                 }}
@@ -179,7 +112,7 @@ export default function Card(props) {
               <>
                 <hr className="text-primary" />{" "}
                 <Link
-                  to={`/SingleProductPage/${props.id}`}
+                  to={`/SingleProductPage/${props._id}`}
                   className="text-primary text-decoration-none fw-bold fs-5"
                 >
                   More Details ... 🕵️‍♀️
@@ -187,29 +120,16 @@ export default function Card(props) {
               </>
             )}
             <button
-              onClick={handleAddToCart}
+              onClick={() => handleAddToCart(props)}
               className="btn btn-primary fw-bold shadow-lg mt-2 form-control position-relative"
             >
               Add To Cart <i className="fa-solid fa-cart-plus mx-2 fs-5"></i>
-              {product && (
-                <span
-                  style={{
-                    right: "-5px",
-                    top: "-5px",
-                    padding: "6px",
-                    background: "#01497c",
-                    border: "2px solid #fff",
-                    color: "#fff",
-                  }}
-                  className="cart-count"
-                >
-                  {product?.quantity}
-                </span>
-              )}
             </button>
           </div>
         </div>
       </div>
     </>
   );
-}
+};
+
+export default memo(Card);

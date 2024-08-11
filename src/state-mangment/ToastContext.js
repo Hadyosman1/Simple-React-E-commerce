@@ -4,7 +4,6 @@ export const toastContext = createContext();
 function ToastContext({ children }) {
   const [toasts, setToasts] = useState([]);
 
-
   return (
     <toastContext.Provider value={{ toasts, setToasts }}>
       {children}

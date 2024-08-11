@@ -19,7 +19,6 @@
   background-color: #3333338a;
 }
 
-
 img::selection {
   background-color: transparent;
 }
@@ -106,6 +105,17 @@ fieldset:has(.password-input-field:focus) {
   }
 }
 
+.slider-item {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to top, #01497c69 12%, transparent);
+  }
+}
+
 .my-tooltip {
   border-radius: 4px;
   visibility: hidden;
@@ -157,7 +167,6 @@ code {
     border: 3px solid #a7a7a7;
     pointer-events: none;
     z-index: 10000;
-    transition: all 70ms;
   }
 }
 
@@ -351,6 +360,7 @@ h2.my-heading {
 
 .text-clamp {
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -423,7 +433,7 @@ hr.text-primary {
 footer {
   background-color: #01497c;
   padding-block: 3.5rem;
-  margin-top: 50px;
+  /* margin-top: 50px; */
 
   .container {
     display: flex;
@@ -843,6 +853,7 @@ footer {
       h2 {
         width: 140px;
         display: -webkit-box;
+        line-clamp: 2;
         -webkit-line-clamp: 2;
         overflow: hidden;
         -webkit-box-orient: vertical;
@@ -926,6 +937,8 @@ footer {
   bottom: 80px;
   right: 20px;
   height: fit-content;
+  display: flex;
+  justify-content: end;
 }
 
 .toasts-parent.overlay {
@@ -993,4 +1006,28 @@ footer {
 
 .drop-down-hidden {
   scale: 0;
+}
+
+.forget-pass-page {
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  background: #e6e6e6;
+  padding: 3rem 1rem;
+
+  div:has(form) {
+    width: clamp(280px, 350px, 100%);
+    padding: 3rem 1.5rem;
+    background: #fff;
+    border: 1px solid #0066b0;
+
+    div:has(img) {
+      img {
+        width: 100%;
+        max-height: 300px;
+        object-position: center top;
+        object-fit: contain;
+      }
+    }
+  }
 }

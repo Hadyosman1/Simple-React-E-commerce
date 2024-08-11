@@ -1,17 +1,17 @@
-import { useContext, useEffect, useState } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 import Card from "../products/Card";
 import Loader from "../../layout/Loader";
 import { productsContext } from "../../state-mangment/ProductsContext";
 import { loaderContext } from "../../state-mangment/LoaderContext";
 import { toastContext } from "../../state-mangment/ToastContext";
 
-export default function CardsContainer() {
+const CardsContainer = () => {
   const { products } = useContext(productsContext);
   const { loaderIsVisible } = useContext(loaderContext);
+  const { setToasts } = useContext(toastContext);
   const [categories, setCategories] = useState([]);
   const [filterArr, setFilterArr] = useState([]);
   const [filterName, setFilterName] = useState("");
-  const { setToasts } = useContext(toastContext);
 
   useEffect(() => {
     async function fetchCategories() {
@@ -41,7 +41,7 @@ export default function CardsContainer() {
     if (categories.length === 0) {
       fetchCategories();
     }
-  }, [categories, setToasts]);
+  }, [categories.length, setToasts]);
 
   const filterByCategory = (cat) => {
     if (cat === "all") {
@@ -61,37 +61,15 @@ export default function CardsContainer() {
 
   let filterOrAll = filterArr.length > 0 ? filterArr : products;
 
-  let productsList = filterOrAll
-    .toReversed()
-    .map(
-      (
-        {
-          _id,
-          title,
-          price,
-          description,
-          category,
-          image,
-          rating: { rate, count },
-        },
-        i
-      ) => {
-        return (
-          <Card
-            key={_id}
-            title={title}
-            price={price}
-            description={description}
-            category={category}
-            image={image}
-            rate={rate}
-            count={count}
-            id={_id}
-            animationType={i % 2 === 0 ? "fade-top" : "fade-bottom"}
-          />
-        );
-      }
+  let productsList = filterOrAll.toReversed().map((el, i) => {
+    return (
+      <Card
+        key={el._id}
+        {...el}
+        animationType={i % 2 === 0 ? "fade-top" : "fade-bottom"}
+      />
     );
+  });
 
   let cats = categories.map(({ name }) => {
     return (
@@ -104,7 +82,7 @@ export default function CardsContainer() {
         } `}
         style={{
           maxWidth: "220px",
-          minWidth:"130px"
+          minWidth: "130px",
         }}
       >
         {name}
@@ -114,7 +92,7 @@ export default function CardsContainer() {
 
   return (
     <>
-      <div className="container overflow-hidden">
+      <div className="container pt-3 pb-5 ">
         <div className="row">
           <h2 className="my-heading">Our Products</h2>
         </div>
@@ -142,4 +120,6 @@ export default function CardsContainer() {
       </div>
     </>
   );
-}
+};
+
+export default memo(CardsContainer);

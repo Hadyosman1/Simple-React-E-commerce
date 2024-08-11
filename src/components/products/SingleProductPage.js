@@ -17,18 +17,7 @@ export default function SingleProductPage() {
   }, [products, productId]);
 
   let productDetails = Object.keys(product).length !== 0 && (
-    <Card
-      media="single"
-      key={product._id}
-      title={product.title}
-      price={product.price}
-      description={product.description}
-      category={product.category}
-      image={product.image}
-      rate={product.rating.rate}
-      count={product.rating.count}
-      id={product._id}
-    />
+    <Card media="single" {...product} />
   );
 
   return (

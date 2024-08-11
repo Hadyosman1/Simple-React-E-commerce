@@ -45,7 +45,7 @@ function CartPage() {
 
   const productsList = cartProducts.map((pro) => {
     return (
-      <tr data-aos="fade-down" key={pro._id}>
+      <tr key={pro._id}>
         <td style={{ maxWidth: "200px" }}>{pro.title}</td>
         <td className="text-success fw-bolder">
           {(pro.price * pro.quantity).toFixed(2)}$
@@ -93,7 +93,7 @@ function CartPage() {
 
   return (
     <>
-      <div className="container pt-4">
+      <div className="container py-5">
         {cartProducts.length !== 0 ? (
           <>
             <div className="d-flex my-3 align-items-center justify-content-between">

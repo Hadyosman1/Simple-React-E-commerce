@@ -1,5 +1,3 @@
-import React from "react";
-
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -26,52 +24,41 @@ const Slider = () => {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        {/* <SwiperSlide>
-          <div style={{ height: "calc(100svh - 50px)" }} className=" ">
-            <img
-              style={{ objectFit: "cover" }}
-              src="./assets/pic1.jpg"
-              className="d-block h-100 w-100"
-              alt="products"
-            />
-          </div>
-        </SwiperSlide> */}
-        {/* <SwiperSlide>
-          <div style={{ height: "calc(100svh - 50px)" }} className="">
-            <img
-              style={{ objectFit: "cover" }}
-              src="./assets/pic2.jpg"
-              className="d-block h-100 w-100"
-              alt="products"
-            />
-          </div>
-        </SwiperSlide> */}
         <SwiperSlide>
-          <div style={{ height: "calc(100svh - 50px)" }} className=" ">
+          <div
+            style={{ height: "calc(100svh - 50px)" }}
+            className="slider-item "
+          >
             <img
               style={{ objectFit: "cover" }}
-              src="./assets/pic3.jpg"
-              className="d-block h-100 w-100"
+              src="./assets/pic1.webp"
+              className="h-100 w-100"
               alt="products"
             />
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div style={{ height: "calc(100svh - 50px)" }} className=" ">
+          <div
+            style={{ height: "calc(100svh - 50px)" }}
+            className="slider-item "
+          >
             <img
               style={{ objectFit: "cover" }}
-              src="./assets/pic4.jpg"
-              className="d-block h-100 w-100"
+              src="./assets/pic3.webp"
+              className="h-100 w-100"
               alt="products"
             />
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div style={{ height: "calc(100svh - 50px)" }} className=" ">
+          <div
+            style={{ height: "calc(100svh - 50px)" }}
+            className="slider-item "
+          >
             <img
               style={{ objectFit: "cover" }}
-              src="./assets/pic5.jpg"
-              className="d-block h-100 w-100"
+              src="./assets/pic9.webp"
+              className="h-100 w-100"
               alt="products"
             />
           </div>

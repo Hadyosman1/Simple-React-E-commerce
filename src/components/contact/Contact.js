@@ -5,7 +5,7 @@ export default function Contact() {
   return (
     <>
       <main>
-        <div className="container py-3">
+        <div className="container py-5">
           <h2 className="fs-1 my-4 fw-bold text-primary ">Contact Us</h2>
           <div className="row g-3">
             <div className="col-xl-6">

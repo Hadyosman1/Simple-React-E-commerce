@@ -2,18 +2,23 @@ import { useEffect, useRef } from "react";
 
 export default function BtnScrollToTop() {
   const btnRef = useRef();
+
+  const handleScrolll = () => {
+    if (window.scrollY > 500) {
+      btnRef.current.style.scale = "1";
+    } else {
+      btnRef.current.style.scale = "0";
+    }
+  };
+
   useEffect(() => {
     if (btnRef?.current) {
       btnRef.current.style.scale = "0";
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 500) {
-          btnRef.current.style.scale = "1";
-        } else {
-          btnRef.current.style.scale = "0";
-        }
-      });
+      window.addEventListener("scroll", handleScrolll);
     }
-  }, [btnRef]);
+
+    return () => window.removeEventListener("scroll", handleScrolll);
+  }, []);
 
   return (
     <div

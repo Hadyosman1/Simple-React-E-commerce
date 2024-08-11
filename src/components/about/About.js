@@ -6,7 +6,7 @@ import React from "react";
 const About = () => {
   useScrollToTop();
   return (
-    <div className="container py-4  about-page overflow-hidden">
+    <div className="container py-5 about-page overflow-hidden">
       <div data-aos="fade-up" className="row justify-content-center">
         <div className="col-md-6">
           <img
@@ -47,10 +47,7 @@ const About = () => {
           </p>
         </div>
       </div>
-      <div
-        data-aos="fade-left"
-        className="row justify-content-center mt-4"
-      >
+      <div data-aos="fade-left" className="row justify-content-center mt-4">
         <div className="col-md-4">
           <h2 className="mb-3 text-primary">Our Values</h2>
           <ul className="list-unstyled">

@@ -13,7 +13,6 @@ const EditProfileAvatar = () => {
     auth: { user },
     setAuth,
   } = useContext(authContext);
-  
 
   const handleEdit = async () => {
     const fileSize = file.size / 1024 / 1024;
@@ -31,7 +30,7 @@ const EditProfileAvatar = () => {
       return;
     }
 
-    if (file.name) {
+    if (file?.name) {
       udatePic(user, file, setAuth, setToasts, setIsLoaderVisible, setLightBox);
     }
   };
@@ -54,7 +53,7 @@ const EditProfileAvatar = () => {
           type="file"
           name="avatar"
         />
-        {file.name && (
+        {file?.name && (
           <div className="mt-3">
             <img
               style={{ maxWidth: "100%", objectFit: "contain" }}
@@ -67,7 +66,7 @@ const EditProfileAvatar = () => {
         <div className="d-flex justify-content-between align-items-center">
           {isLoaderVisible && <SmallLodaer translate={"200% 150%"} />}
           <button
-            disabled={!file.name ? true : false}
+            disabled={!file?.name ? true : false}
             onClick={handleEdit}
             type="submit"
             className="btn btn-primary  mt-3 ms-auto"

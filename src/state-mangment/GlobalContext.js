@@ -8,8 +8,8 @@ import ToastContext from "./ToastContext";
 
 function GlobalContext({ children }) {
   return (
-    <ToastContext>
-      <LightBoxModalContext>
+    <LightBoxModalContext>
+      <ToastContext>
         <AuthContext>
           <LoaderContext>
             <ProductsContext>
@@ -19,8 +19,8 @@ function GlobalContext({ children }) {
             </ProductsContext>
           </LoaderContext>
         </AuthContext>
-      </LightBoxModalContext>
-    </ToastContext>
+      </ToastContext>
+    </LightBoxModalContext>
   );
 }
 

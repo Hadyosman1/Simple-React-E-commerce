@@ -33,7 +33,11 @@ function Toasts() {
   }, [toasts, setToasts]);
 
   const toastsList = toasts.reverse().map((toast) => (
-    <div data-aos="zoom-out-top" key={toast.id} className={`my-toast bg-${toast.type} `}>
+    <div
+      data-aos="zoom-out-top"
+      key={toast.id}
+      className={`my-toast bg-${toast.type} `}
+    >
       <div className="row justify-content-between  m-0">
         <p
           className={`col-11 text-start fw-semibold m-0 text-light fs-6 ${

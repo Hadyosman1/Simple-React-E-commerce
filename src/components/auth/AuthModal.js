@@ -3,6 +3,8 @@ import { authModalContext } from "../../state-mangment/AuthModalContentContext";
 import { authContext } from "../../state-mangment/AuthContext";
 import { toastContext } from "../../state-mangment/ToastContext";
 import SmallLodaer from "../../layout/SmallLodaer";
+import ForgetPassBtn from "./ForgetPassBtn";
+import { useNavigate } from "react-router-dom";
 
 const AuthModal = () => {
   const { loginOrRegister } = useContext(authModalContext);
@@ -10,8 +12,9 @@ const AuthModal = () => {
   const { setToasts } = useContext(toastContext);
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
   const [isPassVisible, setIsPassVisible] = useState(false);
-  const closeBtnRef = useRef();
   const [UploadedImage, setUploadedImage] = useState({});
+  const closeBtnRef = useRef();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -112,6 +115,11 @@ const AuthModal = () => {
         id: Date.now(),
       },
     ]);
+  };
+
+  const handleForgetPassClicked = () => {
+    closeBtnRef.current.click();
+    navigate("/forget_password");
   };
 
   return (
@@ -220,6 +228,11 @@ const AuthModal = () => {
                     } px-2 pointer `}
                   ></i>
                 </fieldset>
+                {loginOrRegister === "login" && (
+                  <ForgetPassBtn onClick={handleForgetPassClicked}>
+                    forget password?
+                  </ForgetPassBtn>
+                )}
               </div>
               {loginOrRegister === "register" && (
                 <div className="mb-1">
@@ -235,7 +248,7 @@ const AuthModal = () => {
                     type="file"
                   />
 
-                  {UploadedImage.name && (
+                  {UploadedImage?.name && (
                     <img
                       className="img-fluid mt-3 rounded"
                       src={URL.createObjectURL(UploadedImage)}
