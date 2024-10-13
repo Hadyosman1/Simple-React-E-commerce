@@ -1,13 +1,13 @@
 import { useContext, useEffect } from "react";
 import { authContext } from "../../state-mangment/AuthContext";
 import { lightBoxModalContext } from "../../state-mangment/LightBoxModalContext";
-import useScrollToTop from "../../hooks/useScrollToTop";
+
 
 import { Link, useNavigate } from "react-router-dom";
 import  ProfilePic  from "./ProfilePic";
 
 const Profile = () => {
-  useScrollToTop();
+ 
   const navigate = useNavigate();
 
   const { lightBox, setLightBox } = useContext(lightBoxModalContext);

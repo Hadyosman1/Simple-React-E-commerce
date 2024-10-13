@@ -999,8 +999,8 @@ footer {
 .drop-down-profile {
   transition: all 0.3s;
   bottom: 0;
-  left: 50%;
-  translate: -75% 122%;
+  right: 0;
+  translate: 0 calc(100% + 25px);
   z-index: 99999;
 }
 

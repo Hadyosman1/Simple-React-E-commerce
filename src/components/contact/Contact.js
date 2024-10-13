@@ -1,7 +1,4 @@
-import useScrollToTop from "../../hooks/useScrollToTop";
-
 export default function Contact() {
-  useScrollToTop();
   return (
     <>
       <main>
