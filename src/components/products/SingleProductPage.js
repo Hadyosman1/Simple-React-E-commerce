@@ -1,11 +1,10 @@
 import { useEffect, useContext, useState } from "react";
 import Card from "./Card";
 import { useParams } from "react-router-dom";
-import useScrollToTop from "../../hooks/useScrollToTop";
+
 import { productsContext } from "../../state-mangment/ProductsContext";
 
 export default function SingleProductPage() {
-  useScrollToTop();
   const { productId } = useParams();
   const [product, setProduct] = useState({});
 

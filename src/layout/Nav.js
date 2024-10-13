@@ -96,7 +96,7 @@ const Nav = () => {
             </div>
 
             <button
-              className="navbar-toggler order-2 text-light border-light border-1 py-1 px-2"
+              className="navbar-toggler ms-auto  text-light border-light border-1 py-1 px-2"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
@@ -187,7 +187,7 @@ const Nav = () => {
             {isLoggedIn && (
               <div
                 onClick={() => setIsDropDownVisible(!isDropDownVisible)}
-                className="position-relative me-auto text-light  d-flex align-items-center justify-content-center order-1  pointer ms-2"
+                className="position-relative  text-light  d-flex align-items-center justify-content-center order-1  pointer ms-2"
               >
                 <div className="d-flex justify-content-center align-items-center dropdown-toggle ">
                   <img

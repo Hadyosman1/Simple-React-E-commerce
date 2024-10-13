@@ -1,9 +1,7 @@
 import { useContext } from "react";
 import { cartProductsContext } from "../../state-mangment/CartContext";
-import useScrollToTop from "../../hooks/useScrollToTop";
 
 function CartPage() {
-  useScrollToTop();
   const { cartProducts, setCartProducts } = useContext(cartProductsContext);
 
   const handleDelete = (id) => {
@@ -52,10 +50,13 @@ function CartPage() {
         </td>
         <td>
           <img
+            className="shadow"
             style={{
-              maxWidth: "150px",
-              aspectRatio: "4/3",
-              objectFit: "contain",
+              width: "250px",
+              aspectRatio: "4/3", 
+              objectFit: "cover",
+              objectPosition: "center top",
+              borderRadius: "6px",
             }}
             src={pro.image}
             alt={pro.title}

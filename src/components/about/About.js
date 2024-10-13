@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import useScrollToTop from "../../hooks/useScrollToTop";
+
 
 import React from "react";
 
 const About = () => {
-  useScrollToTop();
+
   return (
     <div className="container py-5 about-page overflow-hidden">
       <div data-aos="fade-up" className="row justify-content-center">

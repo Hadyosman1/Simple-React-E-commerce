@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import BtnScrollToTop from "./BtnScrollToTop";
 import Cursor from "./Cursor";
 import Footer from "./Footer";
@@ -6,10 +6,13 @@ import Nav from "./Nav";
 import LightBoxModal from "./LightBoxModal";
 import Toasts from "./Toasts";
 import AuthModal from "../components/auth/AuthModal";
+import { Suspense } from "react";
+import Loader from "./Loader";
 
 const RootLayout = () => {
   return (
     <>
+      <ScrollRestoration />
       <Toasts />
       <AuthModal />
       <BtnScrollToTop />
@@ -22,7 +25,15 @@ const RootLayout = () => {
           marginTop: "52px",
         }}
       >
-        <Outlet />
+        <Suspense
+          fallback={
+            <div className="loader-container row justify-content-center my-5">
+              <Loader />
+            </div>
+          }
+        >
+          <Outlet />
+        </Suspense>
       </div>
       <Footer />
     </>

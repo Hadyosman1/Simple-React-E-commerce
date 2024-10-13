@@ -1,24 +1,30 @@
-import About from "./components/about/About";
-import SingleProductPage from "./components/products/SingleProductPage";
-import Contact from "./components/contact/Contact";
-import CartPage from "./components/Cart/CartPage";
-import Profile from "./components/profile/Profile";
-import Home from "./components/home/Home";
-import RootLayout from "./layout/RootLayout";
+import { lazy, useEffect } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { myLoader } from "./components/profile/EditProfile";
+import GlobalContext from "./state-mangment/GlobalContext";
 
+// Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-import { myLoader } from "./components/profile/EditProfile";
-
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import NotFoundPage from "./components/404page/NotFoundPage";
-import GlobalContext from "./state-mangment/GlobalContext";
-import EditProfile from "./components/profile/EditProfile";
+// AOS
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
-import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
+
+import RootLayout from "./layout/RootLayout";
+import Home from "./components/home/Home";
+import NotFoundPage from "./components/404page/NotFoundPage";
+const About = lazy(() => import("./components/about/About"));
+const Contact = lazy(() => import("./components/contact/Contact"));
+const Profile = lazy(() => import("./components/profile/Profile"));
+const EditProfile = lazy(() => import("./components/profile/EditProfile"));
+const CartPage = lazy(() => import("./components/Cart/CartPage"));
+const SingleProductPage = lazy(() =>
+  import("./components/products/SingleProductPage")
+);
+const ForgetPassword = lazy(() =>
+  import("./components/ForgetPassword/ForgetPassword")
+);
 
 const router = createBrowserRouter([
   {
@@ -73,14 +79,16 @@ function App() {
     AOS.init({
       duration: 500,
     });
+
+    return () => {
+      AOS.destroy();
+    };
   }, []);
 
   return (
-    <>
-      <GlobalContext>
-        <RouterProvider router={router} />
-      </GlobalContext>
-    </>
+    <GlobalContext>
+      <RouterProvider router={router} />
+    </GlobalContext>
   );
 }
 
